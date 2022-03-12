@@ -10,11 +10,11 @@ f test2()
 test1()
 test2()
 
-eğer x > y
+eğer (x > y)
     yazdır("sa")
-değilse ve x < y
+değilse ve (x < y)
     yazdır("as")
 değilse
     yazdır("xd")
-    eğer 1 < 2
+    eğer (1 < 2)
         yazdır("helal")

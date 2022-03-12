@@ -13,7 +13,8 @@ def main():
     pre_tokens = Reader.Read()
     tokens = Lexer.Analize(pre_tokens)
 
-    # print(tokens)
+    for token in tokens:
+        print(token)
 
 
 if __name__ == "__main__":

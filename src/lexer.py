@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from unicodedata import name
 from reader import PreToken
 
-import enum
 import re
 
 
@@ -24,10 +23,15 @@ class Token:
 
     def __post_init__(self):
         types = [
-            Type(name="VAR_ASSIGN_LONG", pattern="değişken [a-zA-Z0-9_]+ = .*"),
-            Type(name="VAR_ASSIGN_SHORT", pattern="değ [a-zA-Z0-9_]+ = .*"),
-            Type(name="FUNC_CREATE_LONG", pattern="fonksiyon [a-zA-Z0-9_]+\(.*\)"),
-            Type(name="FUNC_CREATE_SHORT", pattern="f [a-zA-Z0-9_]+\(.*\)"),
+            Type(name="VAR_ASSIGN_LONG", pattern="değişken [a-zA-Z0-9_ığüşiöç]+ = .*"),
+            Type(name="VAR_ASSIGN_SHORT", pattern="değ [a-zA-Z0-9_ığüşiöç]+ = .*"),
+            Type(name="FUNC_CREATE_LONG", pattern="fonksiyon [a-zA-Z0-9_ığüşiöç]+\(.*\)"),
+            Type(name="FUNC_CREATE_SHORT", pattern="f [a-zA-Z0-9_ığüşiöç]+\(.*\)"),
+            # ! IMPROVE FUNC_INVOKE | test_patern = (?<!fonksiyon +)[a-zA-Z0-9_ığüşiöç]+\(.*\)
+            Type(name="FUNC_INVOKE", pattern="[a-zA-Z0-9_ığüşiöç]+\(.*\)"),
+            Type(name="IF_OPERATION", pattern="eğer *\(.+\)"),
+            Type(name="ELIF_OPERATION", pattern="değilse ve *\(.+\)"),
+            Type(name="ELSE_OPERATION", pattern="değilse(?! )"),
         ]
 
         for type in types:
@@ -47,5 +51,4 @@ class Lexer:
         for pre_token in preTokens:
             tokens.append(Token(level=pre_token.level, lineNumber=pre_token.lineNumber, originalValue=pre_token.value))
 
-        for token in tokens:
-            print(token)
+        return tokens
