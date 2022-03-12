@@ -1,6 +1,15 @@
 değişken x = 5
 değ y = 6
 
+fonksiyon test1()
+    yazdır("test1")
+
+f test2()
+    yazdır("test2")
+
+test1()
+test2()
+
 eğer x > y
     yazdır("sa")
 değilse ve x < y

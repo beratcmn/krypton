@@ -1,12 +1,12 @@
 # Programı okuyup düzgün hale getirmekten sorumlu
 
 from dataclasses import dataclass
-import re
 
 
 @dataclass
 class PreToken:
     level: int
+    lineNumber: int
     value: str
 
 
@@ -17,8 +17,10 @@ class Reader:
 
         tokens = []
 
+        i = 1
         for line in input_lines:
-            tokens.append(PreToken(line.count("    "), line.replace("    ", "")))
+            tokens.append(PreToken(level=line.count("    "), lineNumber=i, value=line.replace("    ", "")))
+            i = i + 1
 
         input_file.close()
 

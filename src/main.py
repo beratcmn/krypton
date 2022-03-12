@@ -11,7 +11,9 @@ from lexer import Token
 
 def main():
     pre_tokens = Reader.Read()
-    tokens = Lexer.Lex(pre_tokens)
+    tokens = Lexer.Analize(pre_tokens)
+
+    # print(tokens)
 
 
 if __name__ == "__main__":
