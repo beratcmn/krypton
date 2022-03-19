@@ -1,21 +1,25 @@
-değişken x = 5;
-değ y = 6;
-
-fonksiyon test1(){
-    yazdır("test1");
-}
-
-test1();
-
-eğer (x > y){
-    yazdır("sa");
-}
-değilse ve (x < y){
-    yazdır("as");
-}
-değilse{
-    yazdır("xd");
-    eğer (1 < 2){
-        yazdır("helal");
+sınıf Gramer2{
+    fonksiyon Giriş(){
+        değişken x = 5;
+        değ y = 6;
+        
+        fonksiyon test1(){
+            yazdır("test1");
+        }
+        
+        test1();
+        
+        eğer (x > y){
+            yazdır("sa");
+        }
+        değilse ve (x < y){
+            yazdır("as");
+        }
+        değilse{
+            yazdır("xd");
+            eğer (1 < 2){
+                yazdır("helal");
+            }
+        }
     }
 }

@@ -7,7 +7,12 @@ from writer import Writer
 
 
 def main():
-    print(Reader.ReadInputCode())
+    input_code = Reader.ReadInputCode()[0]
+    levels = Reader.ReadInputCode()[1]
+    tokens = Lexer.Tokenize(_inputCode=input_code, _levels=levels)
+
+    for t in tokens:
+        print(t)
 
 
 if __name__ == "__main__":
