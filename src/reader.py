@@ -1,27 +1,15 @@
 # Programı okuyup düzgün hale getirmekten sorumlu
 
-from dataclasses import dataclass
-
-
-@dataclass
-class PreToken:
-    level: int
-    lineNumber: int
-    value: str
-
 
 class Reader:
-    def Read() -> list[PreToken]:
-        input_file = open("gramer.kr", "r", encoding="utf-8")
-        input_lines = [line.rstrip("\n") for line in input_file.readlines()]
+    def ReadInputCode():
+        #input_file = open("gramer.kr", "r", encoding="utf-8")
+        input_file = open(
+            r'C:\Users\\berat\Projects\Python\krypton-beta\gramer\gramer1.kr',
+            "r", encoding="utf-8")  # ? Debug
 
-        tokens = []
-
-        i = 1
-        for line in input_lines:
-            tokens.append(PreToken(level=line.count("    "), lineNumber=i, value=line.replace("    ", "")))
-            i = i + 1
+        input_code = input_file.read().rstrip()
 
         input_file.close()
 
-        return tokens
+        return input_code

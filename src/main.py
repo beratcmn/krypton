@@ -5,16 +5,9 @@ from lexer import Lexer
 from compiler import Compiler
 from writer import Writer
 
-from reader import PreToken
-from lexer import Token
-
 
 def main():
-    pre_tokens = Reader.Read()
-    tokens = Lexer.Analize(pre_tokens)
-
-    for token in tokens:
-        print(token)
+    print(Reader.ReadInputCode())
 
 
 if __name__ == "__main__":
