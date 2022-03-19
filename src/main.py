@@ -11,8 +11,8 @@ def main():
     levels = Reader.ReadInputCode()[1]
     tokens = Lexer.Tokenize(_inputCode=input_code, _levels=levels)
 
-    for t in tokens:
-        print(t)
+    for i in range(0, len(tokens)):
+        print(str(i+1) + ": " + str(tokens[i]) + " Level: " + str(levels[i][1]))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 sınıf Gramer1{
+    // Programın buradan başlıyor
     fonksiyon Giriş(){
         yazdır("Merhaba, Dünya!");
     }

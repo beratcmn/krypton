@@ -2,8 +2,10 @@
 
 class Lexer:
     tokenTypes = [
-        "DEFINE_CLASS",
-        "CREATE_FUNCTION"
+        "DEFINE_CLASS",         # 0
+        "CREATE_FUNCTION",      # 1
+        "INVOKE_FUNCTION",      # 2
+        "COMMENT",              # 3
     ]
 
     def Tokenize(_inputCode: str, _levels: list):
@@ -18,6 +20,12 @@ class Lexer:
             newToken = []
 
             while end <= len(line):
+
+                # ? Comments
+                if line[start:end] == "//":
+                    newToken.append(Lexer.tokenTypes[3])
+                    newToken.append(line[2:len(line)].strip())
+                    break
 
                 # ? Class
                 if line[start:end] == "sınıf":
@@ -45,6 +53,9 @@ class Lexer:
                             newToken.append("PROPS="+line[start:end-1])
 
                         end = end + 1
+
+                # ? Invoke Def
+                # if line[0:end]
 
                 else:
                     end = end + 1
