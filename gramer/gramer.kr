@@ -1,20 +1,26 @@
-değişken x = 5
-değ y = 6
+değişken x = 5;
+değ y = 6;
 
-fonksiyon test1()
-    yazdır("test1")
+fonksiyon test1(){
+    yazdır("test1");
+}
 
-f test2()
+f test2(){
     yazdır("test2")
+}
 
-test1()
-test2()
+test1();
+test2();
 
-eğer (x > y)
-    yazdır("sa")
-değilse ve (x < y)
-    yazdır("as")
-değilse
+eğer (x > y){
+    yazdır("sa");
+}
+değilse ve (x < y){
+    yazdır("as");
+}
+değilse{
     yazdır("xd")
-    eğer (1 < 2)
-        yazdır("helal")
+    eğer (1 < 2){
+        yazdır("helal");
+    }
+}
