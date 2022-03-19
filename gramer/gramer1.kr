@@ -5,12 +5,7 @@ fonksiyon test1(){
     yazdır("test1");
 }
 
-f test2(){
-    yazdır("test2")
-}
-
 test1();
-test2();
 
 eğer (x > y){
     yazdır("sa");
@@ -19,7 +14,7 @@ değilse ve (x < y){
     yazdır("as");
 }
 değilse{
-    yazdır("xd")
+    yazdır("xd");
     eğer (1 < 2){
         yazdır("helal");
     }
