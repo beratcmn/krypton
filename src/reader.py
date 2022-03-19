@@ -10,16 +10,20 @@ class Reader:
 
         input_code = input_file.read().rstrip()
 
-        lines = input_code.splitlines()
+        lines = [l.strip() for l in input_code.splitlines()]
         line_count = len(lines)
         currentLevel = 0
         levels = []
-        for i in range(0, line_count):
-            levels.append([i, currentLevel])
 
-            if "{" in lines[i]:
+        for line in lines:
+            if line == "}":
+                levels.append([lines.index(line), currentLevel - 1])
+            else:
+                levels.append([lines.index(line), currentLevel])
+
+            if "{" in line:
                 currentLevel = currentLevel + 1
-            if "}" in lines[i]:
+            if "}" in line:
                 currentLevel = currentLevel - 1
 
         # for i in levels:
