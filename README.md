@@ -50,16 +50,16 @@ krypton dosyanızın_yolu/dosyanızın_adı.kr çalıştırma
 [Heron alan formülü](https://tr.wikipedia.org/wiki/Heron_form%C3%BCl%C3%BC) ile kenarları 3,4,5 cm olan bir üçgenin alanını hesaplayalım.
 
 ```
-değişken alan
-değişken u
+değişken alan;
+değişken u;
 
-değişken kenar1 = 3
-değişken kenar2 = 4
-değişken kenar3 = 5
+değişken kenar1 = 3;
+değişken kenar2 = 4;
+değişken kenar3 = 5;
 
-u = (kenar1 + kenar2 + kenar3) / 2
-alan = karekök(u * (u - kenar1) * (u - kenar2) * (u - kenar3))
-yazdır(alan)
+u = (kenar1 + kenar2 + kenar3) / 2;
+alan = karekök(u * (u - kenar1) * (u - kenar2) * (u - kenar3));
+yazdır(alan);
 ```
 
 Sonuç:
