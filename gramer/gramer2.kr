@@ -2,13 +2,13 @@ sınıf Gramer2{
     fonksiyon Giriş(){
         değişken x = 5;
         değ y = 6;
-        
+
         fonksiyon test1(){
             yazdır("test1");
         }
-        
+
         test1();
-        
+
         eğer (x > y){
             yazdır("sa");
         }
@@ -20,10 +20,6 @@ sınıf Gramer2{
             eğer (1 < 2){
                 yazdır("helal");
             }
-        }
-
-        eğer (karekök(2) > 2){
-            yazdır("UwU");
         }
     }
 }
