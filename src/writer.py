@@ -1,4 +1,4 @@
-# Programın son halini dosyaya yazmaktan sorumlu
+# İstendiği taktirde programın son halini dosyaya yazmaktan sorumlu
 
 class Writer:
     pass
