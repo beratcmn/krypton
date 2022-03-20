@@ -6,6 +6,16 @@ class Lexer:
         "CREATE_FUNCTION",      # 1
         "INVOKE_FUNCTION",      # 2
         "COMMENT",              # 3
+        "IF",                   # 4
+        "ELSE",                 # 5
+        "ELIF",                 # 6
+    ]
+
+    reserved = [
+        "fonksiyon",
+        "eğer",
+        "değilse ve",
+        "değilse",
     ]
 
     stringHashes = {}
@@ -34,6 +44,7 @@ class Lexer:
 
             lines[lines.index(line)] = xline
 
+        # ? Parsing
         for line in lines:
             start = 0
             end = 0
@@ -55,6 +66,10 @@ class Lexer:
                 if line == "}":
                     newToken.append("RIGHT_BRACKET")
                     newToken.append("}")
+                    break
+                if line == "":
+                    newToken.append("EMPTY")
+                    newToken.append("")
                     break
 
                 # ? Class
@@ -81,7 +96,7 @@ class Lexer:
                         end = end + 1
 
                 # ? Invoke Def
-                if line[start:end] != "fonksiyon" and line[end-1:end] == "(":
+                if line[start:end].replace("(", "").strip() not in Lexer.reserved and line[end-1:end] == "(":
                     newToken.append(Lexer.tokenTypes[2])
                     newToken.append(line[start:end-1])
                     start = end
@@ -89,6 +104,12 @@ class Lexer:
                         end = end + 1
 
                     newToken.append(line[start:end-1].split(","))  # ? props
+
+                # ? If
+                if line[start:end] == "eğer":
+                    newToken.append(Lexer.tokenTypes[4])
+                    end = end + 2
+                    start = end
 
                 end = end + 1
 

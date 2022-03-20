@@ -5,13 +5,12 @@ class Reader:
     def ReadInputCode():
         #input_file = open("gramer.kr", "r", encoding="utf-8")
         input_file = open(
-            r'C:\Users\\berat\Projects\Python\krypton-beta\gramer\gramer1.kr',
+            r'C:\Users\\berat\Projects\Python\krypton-beta\gramer\gramer2.kr',
             "r", encoding="utf-8")  # ? Debug
 
         input_code = input_file.read().rstrip()
 
         lines = [l.strip() for l in input_code.splitlines()]
-        line_count = len(lines)
         currentLevel = 0
         levels = []
 
@@ -25,9 +24,6 @@ class Reader:
                 currentLevel = currentLevel + 1
             if "}" in line:
                 currentLevel = currentLevel - 1
-
-        # for i in levels:
-        #     print(i)
 
         input_file.close()
 
