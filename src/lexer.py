@@ -62,15 +62,12 @@ class Lexer:
 
                 # ? Brackets
                 if line == "{":
-                    newToken.append("LEFT_BRACKET")
                     newToken.append("{")
                     break
                 if line == "}":
-                    newToken.append("RIGHT_BRACKET")
                     newToken.append("}")
                     break
                 if line == "":
-                    newToken.append("EMPTY")
                     newToken.append("")
                     break
 
