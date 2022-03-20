@@ -8,6 +8,7 @@ class Parser:
         parsed_lines = []
         output_code = ""
 
+        # ? Hash to string
         for token in _tokens:
             for part in token:
                 for h in _string_hashes:
