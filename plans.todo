@@ -1,3 +1,4 @@
+[ ] Fix the compiler
 [ ] Parse the conditions as well.
     In order to parse the conditions extract the parse part into a function then
     invoke it.
