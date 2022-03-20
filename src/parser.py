@@ -12,7 +12,7 @@ class Parser:
             for part in token:
                 for h in _string_hashes:
                     if str(h) in part:
-                        token[token.index(part)] = _string_hashes[h]
+                        token[token.index(part)] = '"' + (_string_hashes[h]) + '"'
 
         for i, token in enumerate(_tokens):
             line = ""
@@ -38,8 +38,8 @@ class Parser:
 
             parsed_lines.append(line)
 
-        parsed_lines.append("\n")
-        parsed_lines.append('if __name__ == "__main__":')
+        parsed_lines = [p for p in parsed_lines if p != ""]
+        parsed_lines.append('\nif __name__ == "__main__":')
         parsed_lines.append('    Program.Main()')
 
         for p in parsed_lines:
