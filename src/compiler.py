@@ -1,4 +1,4 @@
-# Analiz edilen dili çevirmekten sorumlu
+# Programı derlemekten sorumlu
 
 class Compiler:
     pass
