@@ -1,0 +1,5 @@
+sınıf FILE_NAME{
+    fonksiyon Giriş(){
+        
+    }
+}
