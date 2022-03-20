@@ -1,9 +1,18 @@
 # Tokenleri işlenebilir hale getirmekten sorumlu
 
+from operator import index
+
+
 class Parser:
     def Parse(_tokens: list, _levels: list, _string_hashes: dict) -> str:
         parsed_lines = []
         output_code = ""
+
+        for token in _tokens:
+            for part in token:
+                for h in _string_hashes:
+                    if str(h) in part:
+                        token[token.index(part)] = _string_hashes[h]
 
         for i, token in enumerate(_tokens):
             line = ""
