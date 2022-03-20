@@ -25,6 +25,9 @@ def main():
     print("\nParse Result:")
     print(parsed_code)
 
+    print("Output:")
+    Compiler.Compile(parsed_code)
+
 
 if __name__ == "__main__":
     main()
