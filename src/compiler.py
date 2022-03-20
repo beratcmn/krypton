@@ -1,6 +1,6 @@
 # Programı derlemekten sorumlu
 
-import os
+import subprocess
 
 
 class Compiler:
@@ -11,6 +11,6 @@ class Compiler:
         cache_file.write(_input)
         cache_file.close()
 
-        program = open(file_directory, "r", encoding="utf-8").read()
+        subprocess.call(["python", file_directory])
 
-        exec(program)
+        # exec(program)
