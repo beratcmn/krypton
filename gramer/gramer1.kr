@@ -1,4 +1,4 @@
-sınıf Gramer1{
+sınıf Program{
     // Programın buradan başlıyor
     fonksiyon Giriş(){
         yazdır("Merhaba, Dünya!");

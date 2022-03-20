@@ -1,4 +1,4 @@
-sınıf Gramer2{
+sınıf Program{
     fonksiyon Giriş(){
         değişken x = 5;
         değişken y = 6;
