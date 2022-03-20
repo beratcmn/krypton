@@ -3,12 +3,13 @@
 class Lexer:
     tokenTypes = [
         "DEFINE_CLASS",         # 0
-        "CREATE_FUNCTION",      # 1
+        "DEFINE_FUNCTION",      # 1
         "INVOKE_FUNCTION",      # 2
-        "COMMENT",              # 3
-        "IF",                   # 4
-        "ELSE",                 # 5
-        "ELIF",                 # 6
+        "VAR_ASSIGN",           # 3
+        "VAR_ASSIGN_NULL",      # 4
+        "IF",                   # 5
+        "ELSE",                 # 6
+        "ELIF",                 # 7
     ]
 
     reserved = [
@@ -51,11 +52,12 @@ class Lexer:
             newToken = []
 
             while end <= len(line):
+                end = end + 1
 
-                # ? Comments
-                if line[start:end] == "//":
-                    newToken.append(Lexer.tokenTypes[3])
-                    newToken.append(line[2:len(line)].strip())
+                # ? Full line Comment
+                if line[0:2] == "//":
+                    newToken.append("FULL_COMMENT")
+                    newToken.append(line.replace("//", "", 1))
                     break
 
                 # ? Brackets
@@ -72,46 +74,61 @@ class Lexer:
                     newToken.append("")
                     break
 
-                # ? Class
-                if line[start:end] == "sınıf":
-                    newToken.append(Lexer.tokenTypes[0])
-                    newToken.append(line.partition("sınıf")[2].replace("{", "").strip())
+                # ? Var Assign
+                if line[start:end] == "değişken":
+                    start = end
+
+                    # ? Find var name
+                    if "=" in line:
+                        newToken.append(Lexer.tokenTypes[3])
+                        newToken.append(line[start:len(line)-1].partition("=")[0].strip())
+                        newToken.append(line[start:len(line)-1].partition("=")[2].strip())
+                    else:
+                        newToken.append(Lexer.tokenTypes[4])
+                        newToken.append(line[start:len(line)-1].partition("değişken")[0].strip())
                     break
 
-                # ? Def
+                # ? Class
+                if line[start:end] == "sınıf":
+                    start = end
+                    newToken.append(Lexer.tokenTypes[0])
+
+                    while end <= len(line):
+                        end = end + 1
+                        if line[end:end+1] == "{" or line[end:end+1] == line[-1]:
+                            newToken.append(line[start:end].strip())
+                            start = end
+
+                # ? Define function
                 if line[start:end] == "fonksiyon":
+                    start = end
                     newToken.append(Lexer.tokenTypes[1])
+
+                    while end <= len(line):
+                        end = end + 1
+
+                        # ? Find function name
+                        if line[end:end+1] == "(":
+                            newToken.append(line[start:end].strip())
+                            start = end
+
+                        # ? Find props
+                        if line[end-1:end] == ")":
+                            newToken.append(line[start+1:end-1].strip())
+                            start = end
+
+                # ? Invoke Function
+                if line[start:end].strip() not in Lexer.reserved and line[end:end+1] == "(":
+                    newToken.append(Lexer.tokenTypes[2])
+                    newToken.append(line[start:end])
                     start = end
 
                     while end <= len(line):
-                        if line[end-1:end] == "(":
-                            newToken.append(line[start:end-1].strip())
-
+                        end = end + 1
+                        # ? Find props
+                        if line[end-1:end] == ")":
+                            newToken.append(line[start+1:end-1].strip())
                             start = end
-                            while line[end-1:end] != ")":
-                                end = end + 1
-
-                            newToken.append(line[start:end-1].split(","))  # ? props
-
-                        end = end + 1
-
-                # ? Invoke Def
-                if line[start:end].replace("(", "").strip() not in Lexer.reserved and line[end-1:end] == "(":
-                    newToken.append(Lexer.tokenTypes[2])
-                    newToken.append(line[start:end-1])
-                    start = end
-                    while line[end-1:end] != ")":
-                        end = end + 1
-
-                    newToken.append(line[start:end-1].split(","))  # ? props
-
-                # ? If
-                if line[start:end] == "eğer":
-                    newToken.append(Lexer.tokenTypes[4])
-                    end = end + 2
-                    start = end
-
-                end = end + 1
 
             tokens.append(newToken)
         return tokens

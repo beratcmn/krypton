@@ -1,7 +1,8 @@
 sınıf Gramer2{
     fonksiyon Giriş(){
         değişken x = 5;
-        değ y = 6;
+        değişken y = 6;
+        değişken berat;
 
         fonksiyon test1(){
             yazdır("test1");
