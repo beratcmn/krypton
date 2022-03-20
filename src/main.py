@@ -2,6 +2,7 @@
 
 from reader import Reader
 from lexer import Lexer
+from parser import Parser
 from compiler import Compiler
 from writer import Writer
 
