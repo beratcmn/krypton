@@ -148,4 +148,4 @@ class Lexer:
                     break
 
             tokens.append(newToken)
-        return tokens
+        return tokens, Lexer.stringHashes
