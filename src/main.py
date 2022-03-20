@@ -5,6 +5,7 @@ from lexer import Lexer
 from parser import Parser
 from compiler import Compiler
 from writer import Writer
+from shell import Shell
 
 
 def main():
