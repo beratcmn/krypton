@@ -92,12 +92,8 @@ class Lexer:
                 if line[start:end] == "sınıf":
                     start = end
                     newToken.append(Lexer.tokenTypes[0])
-
-                    while end <= len(line):
-                        end = end + 1
-                        if line[end:end+1] == "{" or line[end:end+1] == line[-1]:
-                            newToken.append(line[start:end].strip())
-                            start = end
+                    newToken.append(line.partition("sınıf")[2].strip().replace("{", ""))
+                    break
 
                 # ? Define function
                 if line[start:end] == "fonksiyon":
@@ -116,6 +112,7 @@ class Lexer:
                         if line[end-1:end] == ")":
                             newToken.append(line[start+1:end-1].strip())
                             start = end
+                    break
 
                 # ? Invoke Function
                 if line[start:end].strip() not in Lexer.reserved and line[end:end+1] == "(" and line[start:end] != " " and line[start:end] != "":
@@ -135,17 +132,20 @@ class Lexer:
                     start = end
                     newToken.append(Lexer.tokenTypes[5])
                     newToken.append(line.partition("eğer")[2].strip().replace("{", ""))
+                    break
 
                 # ? Else If
                 if line[start:end] == "değilse ve":
                     start = end
                     newToken.append(Lexer.tokenTypes[6])
                     newToken.append(line.partition("değilse ve")[2].strip().replace("{", ""))
+                    break
 
                 # ? Else
                 if line[start:end] == "değilse" and line[start:end + 3] != "değilse ve":
                     start = end
                     newToken.append(Lexer.tokenTypes[7])
+                    break
 
             tokens.append(newToken)
         return tokens
