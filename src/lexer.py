@@ -47,7 +47,8 @@ class Lexer:
 
         # ? Remove whitespaces
         for i, line in enumerate(lines):
-            lines[i] = line.replace(" ", "")
+            if line.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
+                lines[i] = line.replace(" ", "")
 
         # ? Parsing
         for line in lines:
