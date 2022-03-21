@@ -45,6 +45,10 @@ class Lexer:
 
             lines[lines.index(line)] = xline
 
+        # ? Remove whitespaces
+        for i, line in enumerate(lines):
+            lines[i] = line.replace(" ", "")
+
         # ? Parsing
         for line in lines:
             start = 0
