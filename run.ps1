@@ -1,2 +1,2 @@
-clear
-python "./src/main.py"
+Clear-Host
+python "./src/main.py" "./gramer/gramer1.kr"
