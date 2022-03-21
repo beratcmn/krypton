@@ -9,6 +9,8 @@ from shell import Shell
 
 import sys
 
+debug = False
+
 reserved_args = [
     "--çalıştırma",
 ]
@@ -20,6 +22,7 @@ def ShowTokens(tokens, levels):
 
 
 def main():
+    global debug
     global reserved_args
 
     args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
@@ -30,13 +33,15 @@ def main():
     tokens, string_hashes = Lexer.Tokenize(_inputCode=input_code, _levels=levels)
     parsed_code = Parser.Parse(tokens, levels, string_hashes)
 
-    # print("Source Code:")
-    # print(input_code)
-    # print("\nLex Result:")
-    # ShowTokens(tokens, levels)
-    # print("\nParse Result:")
-    # print(parsed_code)
-    # print("Output:")
+    if debug == True:
+        print("Source Code:")
+        print(input_code)
+        print("\nLex Result:")
+        ShowTokens(tokens, levels)
+        print("\nParse Result:")
+        print(parsed_code)
+        print("Output:")
+
     Compiler.Compile(parsed_code)
 
 
