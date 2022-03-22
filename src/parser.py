@@ -1,8 +1,5 @@
 # Tokenleri işlenebilir hale getirmekten sorumlu
 
-from operator import index
-
-
 class Parser:
     def Parse(_tokens: list, _levels: list, _string_hashes: dict) -> str:
         parsed_lines = []

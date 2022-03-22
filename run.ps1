@@ -1,2 +1,2 @@
 Clear-Host
-python "./src/main.py" "./gramer/gramer1.kr"
+python3.10 "./src/main.py" "./gramer/gramer1.kr"
