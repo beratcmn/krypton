@@ -1,6 +1,9 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
 
+
 class Lexer:
+    debug = False
+
     tokenTypes = [
         "DEFINE_CLASS",         # 0
         "DEFINE_FUNCTION",      # 1
@@ -16,6 +19,7 @@ class Lexer:
         "fonksiyon",
         "eğer",
         "değilse ve",
+        "değilseve",
         "değilse",
     ]
 
@@ -49,6 +53,11 @@ class Lexer:
         for i, line in enumerate(lines):
             if line.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
                 lines[i] = line.replace(" ", "")
+
+        if Lexer.debug == True:
+            print("Without whitespaces:")
+            for line in lines:
+                print(line)
 
         # ? Parsing
         for line in lines:
@@ -137,14 +146,14 @@ class Lexer:
                     break
 
                 # ? Else If
-                if line[start:end] == "değilse ve":
+                if line[start:end] == "değilseve":
                     start = end
                     newToken.append(Lexer.tokenTypes[6])
-                    newToken.append(line.partition("değilse ve")[2].strip().replace("{", ""))
+                    newToken.append(line.partition("değilseve")[2].strip().replace("{", ""))
                     break
 
                 # ? Else
-                if line[start:end] == "değilse" and line[start:end + 3] != "değilse ve":
+                if line[start:end] == "değilse" and line[start:end + 2] != "değilseve":
                     start = end
                     newToken.append(Lexer.tokenTypes[7])
                     break
