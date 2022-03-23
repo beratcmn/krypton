@@ -1,5 +1,12 @@
 sınıf Program{
     fonksiyon Giriş(){
-        yazdır("Test2 den herkese merhaba");
+    yazdır("Özberk naber kanka");
+
+    değişken x = 5;
+
+    yazdır(x + 6);
+
+    değişken berat;
+        
     }
 }

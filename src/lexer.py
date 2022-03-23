@@ -13,6 +13,7 @@ class Lexer:
         "IF",                   # 5
         "ELSE_IF",              # 6
         "ELSE",                 # 7
+        "FULL_COMMENT",         # 8
     ]
 
     reserved = [
@@ -70,7 +71,7 @@ class Lexer:
 
                 # ? Full line Comment
                 if line[0:2] == "//":
-                    newToken.append("FULL_COMMENT")
+                    newToken.append(Lexer.tokenTypes[8])
                     newToken.append(line.replace("//", "", 1))
                     break
 
