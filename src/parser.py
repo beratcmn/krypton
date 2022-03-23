@@ -13,7 +13,9 @@ class Parser:
                         token[token.index(part)] = '"' + (_string_hashes[h]) + '"'
 
         for i, token in enumerate(_tokens):
+
             line = ""
+
             # ? Parse Class
             if token[0] == "DEFINE_CLASS":
                 line = int(_levels[i][1]) * "    " + "class " + token[1] + ":"
@@ -33,6 +35,26 @@ class Parser:
             # ? Parse Print Function Invoke
             elif token[0] == "INVOKE_FUNCTION" and token[1] == "yazdır":
                 line = int(_levels[i][1]) * "    " + "print" + "(" + token[2] + ")"
+
+            # ? Parse Var Assign
+            elif token[0] == "VAR_ASSIGN":
+                line = int(_levels[i][1]) * "    " + token[1] + " = " + token[2]
+
+            # ? Parse Var Assign Null
+            elif token[0] == "VAR_ASSIGN_NULL":
+                line = int(_levels[i][1]) * "    " + token[1] + " = " + "None"
+
+            # ? Parse If
+            elif token[0] == "IF":
+                line = int(_levels[i][1]) * "    " + "if" + " " + token[1] + ":"
+
+            # ? Parse If
+            elif token[0] == "ELSE_IF":
+                line = int(_levels[i][1]) * "    " + "elif" + " " + token[1] + ":"
+
+            # ? Parse Else
+            elif token[0] == "ELSE":
+                line = int(_levels[i][1]) * "    " + "else" + ":"
 
             parsed_lines.append(line)
 
