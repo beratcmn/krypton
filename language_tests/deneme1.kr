@@ -1,0 +1,5 @@
+sınıf Program{
+    fonksiyon Giriş(){
+        yazdır("Test2 den herkese merhaba");
+    }
+}
