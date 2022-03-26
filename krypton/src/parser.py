@@ -15,6 +15,7 @@ class Parser:
         for i, token in enumerate(_tokens):
 
             line = ""
+            extraLine = ""
 
             # ? Parse Class
             if token[0] == "DEFINE_CLASS":
@@ -28,6 +29,11 @@ class Parser:
             elif token[0] == "DEFINE_FUNCTION" and token[1] == "Giriş":
                 line = int(_levels[i][1]) * "    " + "def Main" + "(" + token[2] + ")" + ":"
 
+            # ? Parse Empty Function Definition
+            elif token[0] == "DEFINE_FUNCTION" and ((_tokens[i + 1][0] == "" or _tokens[i + 1][0] == "}") and _levels[i + 1][1] >= _levels[i][1]):
+                line = int(_levels[i][1]) * "    " + "def " + token[1] + "(" + token[2] + ")" + ":"
+                extraLine = (int(_levels[i][1]) + 1) * "    " + "pass"
+
             # ? Parse Normal Function Definition
             elif token[0] == "DEFINE_FUNCTION":
                 line = int(_levels[i][1]) * "    " + "def " + token[1] + "(" + token[2] + ")" + ":"
@@ -35,6 +41,10 @@ class Parser:
             # ? Parse Print Function Invoke
             elif token[0] == "INVOKE_FUNCTION" and token[1] == "yazdır":
                 line = int(_levels[i][1]) * "    " + "print" + "(" + token[2] + ")"
+
+            # ? Parse Function Invoke
+            elif token[0] == "INVOKE_FUNCTION":
+                line = int(_levels[i][1]) * "    " + token[1] + "(" + token[2] + ")"
 
             # ? Parse Var Assign
             elif token[0] == "VAR_ASSIGN":
@@ -57,6 +67,8 @@ class Parser:
                 line = int(_levels[i][1]) * "    " + "else" + ":"
 
             parsed_lines.append(line)
+            if extraLine != "":
+                parsed_lines.append(extraLine)
 
         parsed_lines = [p for p in parsed_lines if p != ""]
         parsed_lines.append('\nif __name__ == "__main__":')
