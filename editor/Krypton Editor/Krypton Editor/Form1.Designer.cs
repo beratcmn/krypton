@@ -36,13 +36,14 @@
             this.yeniProjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.varsayılanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boşToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.mainEditor = new FastColoredTextBoxNS.FastColoredTextBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainEditor)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dosyaToolStripMenuItem});
@@ -57,6 +58,7 @@
             this.dosyaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.açToolStripMenuItem,
             this.yeniProjeToolStripMenuItem});
+            this.dosyaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
             this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.dosyaToolStripMenuItem.Text = "Dosya";
@@ -67,7 +69,6 @@
             this.açToolStripMenuItem.Name = "açToolStripMenuItem";
             this.açToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.açToolStripMenuItem.Text = "Proje Aç";
-            this.açToolStripMenuItem.Click += new System.EventHandler(this.açToolStripMenuItem_Click);
             // 
             // yeniProjeToolStripMenuItem
             // 
@@ -99,9 +100,9 @@
             this.boşToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.boşToolStripMenuItem.Text = "Boş";
             // 
-            // fastColoredTextBox1
+            // mainEditor
             // 
-            this.fastColoredTextBox1.AutoCompleteBracketsList = new char[] {
+            this.mainEditor.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
         '{',
@@ -112,43 +113,59 @@
         '\"',
         '\'',
         '\''};
-            this.fastColoredTextBox1.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*" +
-    "(?<range>:)\\s*(?<range>[^;]+);";
-            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(179, 14);
-            this.fastColoredTextBox1.BackBrush = null;
-            this.fastColoredTextBox1.CharHeight = 14;
-            this.fastColoredTextBox1.CharWidth = 8;
-            this.fastColoredTextBox1.CurrentPenSize = 3;
-            this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.fastColoredTextBox1.DocumentPath = null;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fastColoredTextBox1.IsReplaceMode = false;
-            this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 27);
-            this.fastColoredTextBox1.Name = "fastColoredTextBox1";
-            this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
-            this.fastColoredTextBox1.SelectionChangedDelayedEnabled = false;
-            this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
-            this.fastColoredTextBox1.Size = new System.Drawing.Size(788, 411);
-            this.fastColoredTextBox1.TabIndex = 1;
-            this.fastColoredTextBox1.Text = "fastColoredTextBox1";
-            this.fastColoredTextBox1.Zoom = 100;
+            this.mainEditor.AutoIndentCharsPatterns = "";
+            this.mainEditor.AutoScrollMinSize = new System.Drawing.Size(335, 108);
+            this.mainEditor.BackBrush = null;
+            this.mainEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.mainEditor.BookmarkColor = System.Drawing.Color.White;
+            this.mainEditor.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.mainEditor.CharHeight = 18;
+            this.mainEditor.CharWidth = 9;
+            this.mainEditor.CommentPrefix = null;
+            this.mainEditor.CurrentPenSize = 3;
+            this.mainEditor.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainEditor.DocumentPath = null;
+            this.mainEditor.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mainEditor.ForeColor = System.Drawing.Color.White;
+            this.mainEditor.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.mainEditor.IsReplaceMode = false;
+            this.mainEditor.LeftBracket = '<';
+            this.mainEditor.LeftBracket2 = '(';
+            this.mainEditor.Location = new System.Drawing.Point(0, 24);
+            this.mainEditor.Name = "mainEditor";
+            this.mainEditor.Paddings = new System.Windows.Forms.Padding(0);
+            this.mainEditor.RightBracket = '>';
+            this.mainEditor.RightBracket2 = ')';
+            this.mainEditor.SelectionChangedDelayedEnabled = false;
+            this.mainEditor.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.mainEditor.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("mainEditor.ServiceColors")));
+            this.mainEditor.ServiceLinesColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.mainEditor.Size = new System.Drawing.Size(800, 426);
+            this.mainEditor.TabIndex = 1;
+            this.mainEditor.Text = "sınıf Program{\r\n    // Programın buradan başlıyor\r\n    fonksiyon Giriş(){\r\n      " +
+    "  yazdır(\"Merhaba, Dünya!\");\r\n    }\r\n}";
+            this.mainEditor.Zoom = 100;
+            this.mainEditor.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.mainEditor_TextChanged);
+            this.mainEditor.Load += new System.EventHandler(this.mainEditor_Load);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.fastColoredTextBox1);
+            this.Controls.Add(this.mainEditor);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Krypton Kod Editörü";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainEditor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +179,6 @@
         private System.Windows.Forms.ToolStripMenuItem varsayılanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boşToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem açToolStripMenuItem;
-        private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
+        private FastColoredTextBoxNS.FastColoredTextBox mainEditor;
     }
 }
