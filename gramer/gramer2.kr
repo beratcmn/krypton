@@ -1,4 +1,8 @@
 sınıf Program{
+
+    fonksiyon test2(){
+    }
+
     fonksiyon Giriş(){
         değişken x = 5;
         değişken y = 6;
