@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Krypton Editor/1.0.0": {
+        "runtime": {
+          "Krypton Editor.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Krypton Editor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

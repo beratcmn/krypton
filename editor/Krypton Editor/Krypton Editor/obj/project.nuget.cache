@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "rxdqiYt3Qno9L5xkCEPRlP2oUpVbF4tUI5wv6egj0Y5bb9yLvpdB5qU/LXI2MDK7x6mOD2aF9q4HzoYsTeuF7A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\berat\\Projects\\Python\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\berat\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.23\\microsoft.netcore.app.host.win-x64.3.1.23.nupkg.sha512",
+    "C:\\Users\\berat\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\berat\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\berat\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

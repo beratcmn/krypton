@@ -1,0 +1,16 @@
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.exe
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.deps.json
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.runtimeconfig.json
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.runtimeconfig.dev.json
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.dll
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\bin\Debug\netcoreapp3.1\Krypton Editor.pdb
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.csproj.AssemblyReference.cache
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton_Editor.Form1.resources
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.csproj.GenerateResource.cache
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.AssemblyInfoInputs.cache
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.AssemblyInfo.cs
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.csproj.CoreCompileInputs.cache
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.dll
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.pdb
+C:\Users\berat\Projects\Python\krypton-beta\editor\Krypton Editor\Krypton Editor\obj\Debug\netcoreapp3.1\Krypton Editor.genruntimeconfig.cache
