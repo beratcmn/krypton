@@ -1,11 +1,38 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Sara-FCTB/2.16.26.105": {
+        "type": "package",
+        "compile": {
+          "lib/net35/FastColoredTextBox.dll": {}
+        },
+        "runtime": {
+          "lib/net35/FastColoredTextBox.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Sara-FCTB/2.16.26.105": {
+      "sha512": "7orfEMYdMy8CGwsQqmlYBrLGXwgDNZicxkcsISUPxUI/UfcQmdAM2XG5O3LNDpwugMMx2SAJyJeK247eLBaNNQ==",
+      "type": "package",
+      "path": "sara-fctb/2.16.26.105",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/FastColoredTextBox.dll",
+        "lib/net35/FastColoredTextBox.pdb",
+        "license.txt",
+        "sara-fctb.2.16.26.105.nupkg.sha512",
+        "sara-fctb.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Sara-FCTB >= 2.16.26.105"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\berat\\.nuget\\packages\\": {}
@@ -45,6 +72,12 @@
     "frameworks": {
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "Sara-FCTB": {
+            "target": "Package",
+            "version": "[2.16.26.105, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -55,24 +88,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.23, 3.1.23]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -84,5 +99,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "'Sara-FCTB 2.16.26.105' paketi, proje hedef çerçevesi '.NETCoreApp,Version=v3.1' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "libraryId": "Sara-FCTB",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

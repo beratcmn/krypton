@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Krypton_Editor
 {
@@ -17,5 +18,20 @@ namespace Krypton_Editor
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void varsayılanToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Varsayılan Yeni Proje");
+        }
+
+        private void açToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
