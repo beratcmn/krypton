@@ -59,5 +59,15 @@ namespace Krypton_Editor.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_180x180 {
+            get {
+                object obj = ResourceManager.GetObject("icon_180x180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
