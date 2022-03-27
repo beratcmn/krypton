@@ -12,10 +12,8 @@ using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 
-namespace Krypton_Editor
-{
-    public partial class Form1 : Form
-    {
+namespace Krypton_Editor {
+    public partial class Form1 : Form {
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -44,29 +42,24 @@ namespace Krypton_Editor
 
         MarkerStyle SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
 
-        public Form1()
-        {
+        public Form1() {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
             mainEditor.AddStyle(SameWordsStyle);
         }
 
 
-        private void varsayılanToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
+        private void varsayılanToolStripMenuItem_Click_1(object sender, EventArgs e) {
             MessageBox.Show("Varsayılan Yeni Proje");
         }
 
-        private void mainEditor_Load(object sender, EventArgs e)
-        {
+        private void mainEditor_Load(object sender, EventArgs e) {
 
         }
 
-        void mainEditor_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        void mainEditor_TextChanged(object sender, TextChangedEventArgs e) {
 
             mainEditor.LeftBracket = '(';
             mainEditor.RightBracket = ')';
@@ -112,68 +105,54 @@ namespace Krypton_Editor
             e.ChangedRange.SetFoldingMarkers(@"/\*", @"\*/");//allow to collapse comment block
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void closeButton_Click(object sender, EventArgs e) {
             Environment.Exit(0);
         }
 
-        private void maximizeButton_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
+        private void maximizeButton_Click(object sender, EventArgs e) {
+            this.MaximizedBounds = Screen.GetWorkingArea(this);
+            if (this.WindowState == FormWindowState.Maximized) {
                 this.WindowState = FormWindowState.Normal;
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
+            } else if (this.WindowState == FormWindowState.Normal) {
                 this.WindowState = FormWindowState.Maximized;
             }
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void minimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void titleBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
+        private void titleBar_MouseDown(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
 
-        private void titleBar_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
+        private void titleBar_MouseDoubleClick(object sender, MouseEventArgs e) {
+            if (this.WindowState == FormWindowState.Maximized) {
                 this.WindowState = FormWindowState.Normal;
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
+            } else if (this.WindowState == FormWindowState.Normal) {
                 this.WindowState = FormWindowState.Maximized;
             }
         }
 
-        private void menuStrip1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
+        private void menuStrip1_MouseDown(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
                 //ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
 
-        private void menuStrip1_DoubleClick(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
+        private void menuStrip1_DoubleClick(object sender, EventArgs e) {
+            // if (this.WindowState == FormWindowState.Maximized)
+            // {
+            //     this.WindowState = FormWindowState.Normal;
+            // }
+            // else if (this.WindowState == FormWindowState.Normal)
+            // {
+            //     this.WindowState = FormWindowState.Maximized;
+            // }
         }
     }
 }

@@ -64,7 +64,7 @@
         '\'',
         '\''};
             this.mainEditor.AutoIndentCharsPatterns = "";
-            this.mainEditor.AutoScrollMinSize = new System.Drawing.Size(308, 138);
+            this.mainEditor.AutoScrollMinSize = new System.Drawing.Size(335, 138);
             this.mainEditor.BackBrush = null;
             this.mainEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.mainEditor.BookmarkColor = System.Drawing.Color.White;
