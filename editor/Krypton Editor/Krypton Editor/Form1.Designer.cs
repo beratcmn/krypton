@@ -64,7 +64,7 @@
         '\'',
         '\''};
             this.mainEditor.AutoIndentCharsPatterns = "";
-            this.mainEditor.AutoScrollMinSize = new System.Drawing.Size(335, 138);
+            this.mainEditor.AutoScrollMinSize = new System.Drawing.Size(308, 138);
             this.mainEditor.BackBrush = null;
             this.mainEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.mainEditor.BookmarkColor = System.Drawing.Color.White;
@@ -218,26 +218,26 @@
             // 
             this.yeniDosyaToolStripMenuItem.Name = "yeniDosyaToolStripMenuItem";
             this.yeniDosyaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.yeniDosyaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.yeniDosyaToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.yeniDosyaToolStripMenuItem.Text = "Yeni Dosya";
             // 
             // açToolStripMenuItem
             // 
             this.açToolStripMenuItem.Name = "açToolStripMenuItem";
             this.açToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.açToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.açToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.açToolStripMenuItem.Text = "Aç...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(253, 6);
             // 
             // kaydetToolStripMenuItem
             // 
             this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
             this.kaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.kaydetToolStripMenuItem.Text = "Kaydet";
             // 
             // farklıKaydetToolStripMenuItem
@@ -245,19 +245,19 @@
             this.farklıKaydetToolStripMenuItem.Name = "farklıKaydetToolStripMenuItem";
             this.farklıKaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.farklıKaydetToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.farklıKaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.farklıKaydetToolStripMenuItem.Text = "Farklı Kaydet";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(253, 6);
             // 
             // kapatToolStripMenuItem
             // 
             this.kapatToolStripMenuItem.Name = "kapatToolStripMenuItem";
             this.kapatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.kapatToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.kapatToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.kapatToolStripMenuItem.Text = "Kapat";
             // 
             // Form1
