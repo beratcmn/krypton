@@ -11,10 +11,8 @@ using System.IO;
 using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
 
-namespace Krypton_Editor
-{
-    public partial class Form1 : Form
-    {
+namespace Krypton_Editor {
+    public partial class Form1 : Form {
         string lang = "CSharp (custom highlighter)";
 
         static Brush BlueColor = new SolidBrush(Color.FromArgb(255, 86, 156, 214));
@@ -24,7 +22,7 @@ namespace Krypton_Editor
         // Styles
         TextStyle BlueStyle = new TextStyle(BlueColor, null, FontStyle.Regular);
         TextStyle ClassStyle = new TextStyle(GreenColor, null, FontStyle.Underline);
-        TextStyle YellowStyle = new TextStyle(GreenColor, null, FontStyle.Underline);
+        TextStyle YellowStyle = new TextStyle(YellowColor, null, FontStyle.Regular);
         TextStyle GrayStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
         TextStyle MagentaStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
         TextStyle GreenStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
@@ -33,29 +31,29 @@ namespace Krypton_Editor
 
         MarkerStyle SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
 
-        public Form1()
-        {
+        public Form1() {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
             mainEditor.AddStyle(SameWordsStyle);
         }
 
 
-        private void varsayılanToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
+        private void varsayılanToolStripMenuItem_Click_1(object sender, EventArgs e) {
             MessageBox.Show("Varsayılan Yeni Proje");
         }
 
-        private void mainEditor_Load(object sender, EventArgs e)
-        {
+        private void mainEditor_Load(object sender, EventArgs e) {
 
         }
 
-        void mainEditor_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        void mainEditor_TextChanged(object sender, TextChangedEventArgs e) {
+
+            mainEditor.LeftBracket = '(';
+            mainEditor.RightBracket = ')';
+            mainEditor.LeftBracket2 = '\x0';
+            mainEditor.RightBracket2 = '\x0';
 
             //Clear style of changed range
             e.ChangedRange.ClearStyle(BlueStyle, ClassStyle, YellowStyle, GrayStyle, MagentaStyle, GreenStyle, BrownStyle);
@@ -74,11 +72,26 @@ namespace Krypton_Editor
             //Class name highlighting
             e.ChangedRange.SetStyle(ClassStyle, @"\b(sınıf)\s+(?<range>\w+?)\b");
 
+            //Function name highlighting
+            // e.ChangedRange.SetStyle(YellowStyle, @"\b(fonksiyon)\s+(?<range>\w+?)\b"); //? Useless for now
+
             //Keyword highlighting
-            e.ChangedRange.SetStyle(BlueStyle, @"\b(sınıf|eğer)\b|#region\b|#endregion\b");
+            e.ChangedRange.SetStyle(BlueStyle, @"\b(sınıf|fonksiyon)\b|#region\b|#endregion\b");
 
             //Func Invoke highlighting
-            e.ChangedRange.SetStyle(YellowStyle, @"\b(yazdır)\b|#region\b|#endregion\b");
+            e.ChangedRange.SetStyle(YellowStyle, @"\b([a-zA-Zığüşöç])*(?=\()");
+            // e.ChangedRange.SetStyle(YellowStyle, @"");
+
+            //string highlighting
+            e.ChangedRange.SetStyle(BrownStyle, @"""""|@""""|''|@"".*?""|(?<!@)(?<range>"".*?[^\\]"")|'.*?[^\\]'");
+
+            //clear folding markers
+            e.ChangedRange.ClearFoldingMarkers();
+
+            //set folding markers
+            e.ChangedRange.SetFoldingMarkers("{", "}");//allow to collapse brackets block
+            e.ChangedRange.SetFoldingMarkers(@"#region\b", @"#endregion\b");//allow to collapse #region blocks
+            e.ChangedRange.SetFoldingMarkers(@"/\*", @"\*/");//allow to collapse comment block
         }
     }
 }
