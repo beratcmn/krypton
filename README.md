@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#"><img src="https://raw.githubusercontent.com/beratcmn/krypton/main/assets/icon_600x600.png" width="300" alt="Krypton"></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/beratcmn/krypton/main/assets/png_500x500.png" width="300" alt="Krypton"></a>
 </p>
 <p align="center">
     <em>Krypton, her yaştan öğrenenler için geliştirildi!</em>
