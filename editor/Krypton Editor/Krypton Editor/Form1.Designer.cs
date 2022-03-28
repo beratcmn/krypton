@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainEditor = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.titleBar = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yeniDosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +40,10 @@
             this.farklıKaydetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.kapatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titleBar = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.mainEditor)).BeginInit();
-            this.titleBar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.titleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainEditor
@@ -93,25 +93,13 @@
     "  yazdır(\"Merhaba, Dünya!\");\r\n    }\r\n}";
             this.mainEditor.Zoom = 100;
             this.mainEditor.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.mainEditor_TextChanged);
-            this.mainEditor.Load += new System.EventHandler(this.mainEditor_Load);
-            // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.titleBar.Controls.Add(this.menuStrip1);
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(800, 30);
-            this.titleBar.TabIndex = 2;
-            this.titleBar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDoubleClick);
-            this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dosyaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -121,8 +109,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.DoubleClick += new System.EventHandler(this.menuStrip1_DoubleClick);
-            this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown);
             // 
             // dosyaToolStripMenuItem
             // 
@@ -136,56 +122,85 @@
             this.toolStripSeparator2,
             this.kapatToolStripMenuItem});
             this.dosyaToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dosyaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.dosyaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
             this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(54, 30);
             this.dosyaToolStripMenuItem.Text = "Dosya";
             // 
             // yeniDosyaToolStripMenuItem
             // 
+            this.yeniDosyaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.yeniDosyaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.yeniDosyaToolStripMenuItem.Name = "yeniDosyaToolStripMenuItem";
+            this.yeniDosyaToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.yeniDosyaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.yeniDosyaToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.yeniDosyaToolStripMenuItem.Size = new System.Drawing.Size(256, 20);
             this.yeniDosyaToolStripMenuItem.Text = "Yeni Dosya";
             // 
             // açToolStripMenuItem
             // 
+            this.açToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.açToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.açToolStripMenuItem.Name = "açToolStripMenuItem";
+            this.açToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.açToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.açToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.açToolStripMenuItem.Size = new System.Drawing.Size(256, 20);
             this.açToolStripMenuItem.Text = "Aç...";
             // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.White;
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(253, 6);
             // 
             // kaydetToolStripMenuItem
             // 
+            this.kaydetToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.kaydetToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
+            this.kaydetToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.kaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 20);
             this.kaydetToolStripMenuItem.Text = "Kaydet";
             // 
             // farklıKaydetToolStripMenuItem
             // 
+            this.farklıKaydetToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.farklıKaydetToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.farklıKaydetToolStripMenuItem.Name = "farklıKaydetToolStripMenuItem";
+            this.farklıKaydetToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.farklıKaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.farklıKaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.farklıKaydetToolStripMenuItem.Size = new System.Drawing.Size(256, 20);
             this.farklıKaydetToolStripMenuItem.Text = "Farklı Kaydet";
             // 
             // toolStripSeparator2
             // 
+            this.toolStripSeparator2.BackColor = System.Drawing.Color.White;
+            this.toolStripSeparator2.ForeColor = System.Drawing.Color.White;
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(253, 6);
             // 
             // kapatToolStripMenuItem
             // 
+            this.kapatToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.kapatToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.kapatToolStripMenuItem.Name = "kapatToolStripMenuItem";
+            this.kapatToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.kapatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.kapatToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.kapatToolStripMenuItem.Size = new System.Drawing.Size(256, 20);
             this.kapatToolStripMenuItem.Text = "Kapat";
+            // 
+            // titleBar
+            // 
+            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.titleBar.Controls.Add(this.menuStrip1);
+            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleBar.Location = new System.Drawing.Point(0, 0);
+            this.titleBar.Name = "titleBar";
+            this.titleBar.Size = new System.Drawing.Size(800, 30);
+            this.titleBar.TabIndex = 2;
             // 
             // Form1
             // 
@@ -202,17 +217,16 @@
             this.Text = "Krypton Kod Editörü";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainEditor)).EndInit();
-            this.titleBar.ResumeLayout(false);
-            this.titleBar.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.titleBar.ResumeLayout(false);
+            this.titleBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private FastColoredTextBoxNS.FastColoredTextBox mainEditor;
-        private System.Windows.Forms.Panel titleBar;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dosyaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yeniDosyaToolStripMenuItem;
@@ -222,5 +236,6 @@
         private System.Windows.Forms.ToolStripMenuItem farklıKaydetToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem kapatToolStripMenuItem;
+        private System.Windows.Forms.Panel titleBar;
     }
 }
