@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XOV3n4vAxzzbhLwVEyFloJielcCLk2Wqv+ta8GBRz68iv7hPbHoJ9q4+zJmeqyOANvGnUq2MvQ60rrXaRECK+g==",
+  "dgSpecHash": "12Jd6AMpEJD7o4lageNmGbzlQjSEIPwq08xuQhP+ii5/af2w/aTdPlbfKm3GeBMuri7W7BvdTFlvN72pQO4wSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
+  "projectFilePath": "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\berat\\.nuget\\packages\\sara-fctb\\2.16.26.105\\sara-fctb.2.16.26.105.nupkg.sha512"
   ],

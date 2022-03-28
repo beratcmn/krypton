@@ -32,10 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainEditor = new FastColoredTextBoxNS.FastColoredTextBox();
             this.titleBar = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.minimizeButton = new System.Windows.Forms.Button();
-            this.maximizeButton = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yeniDosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,10 +98,6 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.titleBar.Controls.Add(this.label1);
-            this.titleBar.Controls.Add(this.minimizeButton);
-            this.titleBar.Controls.Add(this.maximizeButton);
-            this.titleBar.Controls.Add(this.closeButton);
             this.titleBar.Controls.Add(this.menuStrip1);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar.Location = new System.Drawing.Point(0, 0);
@@ -114,71 +106,6 @@
             this.titleBar.TabIndex = 2;
             this.titleBar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDoubleClick);
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Consolas", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(41, 27);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Kr";
-            // 
-            // minimizeButton
-            // 
-            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimizeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizeButton.FlatAppearance.BorderSize = 0;
-            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.minimizeButton.ForeColor = System.Drawing.Color.White;
-            this.minimizeButton.Location = new System.Drawing.Point(710, 0);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(30, 30);
-            this.minimizeButton.TabIndex = 2;
-            this.minimizeButton.Text = "-";
-            this.minimizeButton.UseVisualStyleBackColor = false;
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            // 
-            // maximizeButton
-            // 
-            this.maximizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.maximizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.maximizeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizeButton.FlatAppearance.BorderSize = 0;
-            this.maximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.maximizeButton.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maximizeButton.ForeColor = System.Drawing.Color.White;
-            this.maximizeButton.Location = new System.Drawing.Point(740, 0);
-            this.maximizeButton.Name = "maximizeButton";
-            this.maximizeButton.Size = new System.Drawing.Size(30, 30);
-            this.maximizeButton.TabIndex = 1;
-            this.maximizeButton.Text = "□";
-            this.maximizeButton.UseVisualStyleBackColor = false;
-            this.maximizeButton.Click += new System.EventHandler(this.maximizeButton_Click);
-            // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.ForeColor = System.Drawing.Color.White;
-            this.closeButton.Location = new System.Drawing.Point(770, 0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(30, 30);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.Text = "X";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // menuStrip1
             // 
@@ -189,7 +116,7 @@
             this.dosyaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.menuStrip1.ShowItemToolTips = true;
             this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 4;
@@ -268,7 +195,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.titleBar);
             this.Controls.Add(this.mainEditor);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -287,10 +213,6 @@
         #endregion
         private FastColoredTextBoxNS.FastColoredTextBox mainEditor;
         private System.Windows.Forms.Panel titleBar;
-        private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Button minimizeButton;
-        private System.Windows.Forms.Button maximizeButton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dosyaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yeniDosyaToolStripMenuItem;

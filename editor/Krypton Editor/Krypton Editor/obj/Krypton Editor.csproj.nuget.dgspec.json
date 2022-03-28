@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj": {}
+    "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj": {
+    "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
+        "projectUniqueName": "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
         "projectName": "Krypton Editor",
-        "projectPath": "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
+        "projectPath": "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\Krypton Editor.csproj",
         "packagesPath": "C:\\Users\\berat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berat\\Projects\\krypton-beta\\editor\\Krypton Editor\\Krypton Editor\\obj\\",
+        "outputPath": "C:\\Users\\berat\\Projects\\krypton\\editor\\Krypton Editor\\Krypton Editor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\berat\\AppData\\Roaming\\NuGet\\NuGet.Config",
