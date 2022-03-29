@@ -1,9 +1,13 @@
+def xdd():
+    print("xdxdxd")
 class Program:
+    # Programın buradan başlıyor
     def Main():
-        print("Özberk naber kanka")
-        x = 5
-        print(x+6)
-        berat = None
+        print("Merhaba, Dünya!")
+        Program.xd()
+        Program.xdd()
+    def xd():
+        print("xdxdxd")
 
 if __name__ == "__main__":
     Program.Main()
