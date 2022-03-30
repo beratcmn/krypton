@@ -1,6 +1,0 @@
-sınıf FILE_NAME{
-    // Programın buradan başlıyor
-    fonksiyon Giriş(){
-        
-    }
-}

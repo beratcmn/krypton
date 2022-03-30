@@ -72,7 +72,7 @@ class Parser:
 
         parsed_lines = [p for p in parsed_lines if p != ""]
         parsed_lines.append('\nif __name__ == "__main__":')
-        parsed_lines.append('    Program.Main()')
+        parsed_lines.append('    Main()')
 
         for p in parsed_lines:
             output_code = output_code + p + "\n"
