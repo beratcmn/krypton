@@ -66,6 +66,16 @@ class Parser:
             elif token[0] == "ELSE":
                 line = int(_levels[i][1]) * "    " + "else" + ":"
 
+            # ? Parse Import Module
+            elif token[0] == "IMPORT_MODULE":
+                # ! COMPILE THE IMPORTED FILE THEN PUT INTO THE CACHE
+                line = int(_levels[i][1]) * "    " + "import" + " " + token[1]
+
+            # ? Parse Import Part
+            elif token[0] == "IMPORT_PART":
+                # ! COMPILE THE IMPORTED FILE THEN PUT INTO THE CACHE
+                line = int(_levels[i][1]) * "    " + "from " + token[1] + " import " + token[2]
+
             parsed_lines.append(line)
             if extraLine != "":
                 parsed_lines.append(extraLine)

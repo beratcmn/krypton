@@ -1,0 +1,8 @@
+ekle modül1;
+ekle modül2 > testFonk;
+ekle modül2 > testSınıf > testFonk2;
+
+// Programın buradan başlıyor
+fonksiyon Giriş(){
+    yazdır("Merhaba, Dünya!");
+}

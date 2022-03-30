@@ -14,6 +14,8 @@ class Lexer:
         "ELSE_IF",              # 6
         "ELSE",                 # 7
         "FULL_COMMENT",         # 8
+        "IMPORT_MODULE",        # 9
+        "IMPORT_PART",          # 10
     ]
 
     reserved = [
@@ -22,6 +24,7 @@ class Lexer:
         "değilse ve",
         "değilseve",
         "değilse",
+        "ekle"
     ]
 
     stringHashes = {}
@@ -60,7 +63,7 @@ class Lexer:
             for line in lines:
                 print(line)
 
-        # ? Parsing
+        # ? Tokenizing
         for line in lines:
             start = 0
             end = 0
@@ -84,6 +87,23 @@ class Lexer:
                     break
                 if line == "":
                     newToken.append("")
+                    break
+
+                # ? Import
+                if line[start:end] == "ekle" and ">" not in line:
+                    start = end
+                    newToken.append(Lexer.tokenTypes[9])
+                    newToken.append(line.partition("ekle")[2][0:-1])
+                    break
+
+                # ? Import Part
+                if line[start:end] == "ekle" and ">" in line:
+                    start = end
+                    realPart = line.partition("ekle")[2][0:-1]
+
+                    newToken.append(Lexer.tokenTypes[10])
+                    newToken.append(realPart.rpartition(">")[0].replace(">", "."))
+                    newToken.append(realPart.rpartition(">")[2])
                     break
 
                 # ? Var Assign
