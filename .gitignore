@@ -131,4 +131,5 @@ dmypy.json
 # Custom
 /test
 /tests
-/src/cache
+/krypton/src/cache
+/krypton-tests/
