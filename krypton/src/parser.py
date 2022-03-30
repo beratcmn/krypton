@@ -44,10 +44,7 @@ class Parser:
 
             # ? Parse Function Invoke
             elif token[0] == "INVOKE_FUNCTION":
-                if _levels[i][1] != 0:
-                    line = int(_levels[i][1]) * "    " + "Program." + token[1] + "(" + token[2] + ")"
-                else:
-                    line = int(_levels[i][1]) * "    " + token[1] + "(" + token[2] + ")"
+                line = int(_levels[i][1]) * "    " + token[1] + "(" + token[2] + ")"
 
             # ? Parse Var Assign
             elif token[0] == "VAR_ASSIGN":
