@@ -1,3 +1,4 @@
+import 'Scanner.dart';
 import 'Token.dart';
 import 'TokenType.dart';
 
@@ -10,15 +11,15 @@ void main(List<String> args) {
     print("Kullanım: krypton [dosya_adı]");
     exit(0);
   } else if (args.length == 1) {
-    // runFile(args[0]);
+    runFile(args[0]);
   } else {
     // runPrompt();
   }
 }
 
 void run(String source) {
-  // Scanner = new Scanner(source);
-  List<Token> tokens = scanner.ScanTokens();
+  var scanner = Scanner(source);
+  List<Token> tokens = scanner.scanTokens();
 
   for (Token token in tokens) {
     print(token);

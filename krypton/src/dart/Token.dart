@@ -3,7 +3,7 @@ import 'TokenType.dart';
 class Token {
   TokenType type;
   String lexeme;
-  Object literal;
+  Object? literal;
   int line;
 
   String toString() {
