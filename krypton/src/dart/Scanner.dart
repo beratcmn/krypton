@@ -3,13 +3,13 @@ import 'TokenType.dart';
 import 'Krypton.dart';
 
 class Scanner {
-  String source;
-  List<Token> tokens;
+  final String source;
+  final List<Token> tokens = [];
   int start = 0;
   int current = 0;
   int line = 1;
 
-  Scanner(this.source, this.tokens);
+  Scanner(this.source);
 
   List<Token> scanTokens() {
     while (!isAtEnd()) {
