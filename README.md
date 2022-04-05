@@ -29,21 +29,21 @@ Releases sekmesinde yayınlanan son Düzenleyici ve Derleyiciyi indirebilirsiniz
 # Gereksinimler
 
 - Python 3.6 veya üstü
-- [Mithen](https://github.com/beratcmn/mithen)
+<!-- - [Mithen](https://github.com/beratcmn/mithen) -->
 
-# Kullanım
-
-Krypton şu an için sadece terminal üstünden çalışıyor. Herhangi bir Krypton programını çalıştırmak için;
-
-```
-krypton dosyanızın_yolu/dosyanızın_adı.kr
-```
-
-Krypton programının Python çevirisini görmek için ise;
-
-```
-krypton dosyanızın_yolu/dosyanızın_adı.kr çalıştırma
-```
+<!-- # Kullanım -->
+<!--  -->
+<!-- Krypton şu an için sadece terminal üstünden çalışıyor. Herhangi bir Krypton programını çalıştırmak için; -->
+<!--  -->
+<!-- ``` -->
+<!-- krypton dosyanızın_yolu/dosyanızın_adı.kr -->
+<!-- ``` -->
+<!--  -->
+<!-- Krypton programının Python çevirisini görmek için ise; -->
+<!--  -->
+<!-- ``` -->
+<!-- krypton dosyanızın_yolu/dosyanızın_adı.kr çalıştırma -->
+<!-- ``` -->
 
 # Krypton ile yazılmış bir program nasıl görünüyor?
 
@@ -61,7 +61,7 @@ sınıf ÜçgenAlanı{
 
         u = (kenar1 + kenar2 + kenar3) / 2;
         alan = karekök(u * (u - kenar1) * (u - kenar2) * (u - kenar3));
-        
+
         yazdır(alan);
     }
 }
@@ -73,6 +73,7 @@ Sonuç:
 6
 ```
 
+<!--
 ## Özellikler
 
 - [x] print() fonksiyonu
@@ -93,3 +94,4 @@ Sonuç:
 - [x] list veri tipi
 - [x] dictionary veri tipi
 - [ ] pass yapısı
+-->
