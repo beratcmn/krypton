@@ -1,1 +1,0 @@
-# Krypto'a başlarken!
