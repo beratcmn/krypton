@@ -1,5 +1,6 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
 from classes.Line import Line
+from classes.Pairs import pairs
 
 
 class Lexer:
@@ -32,4 +33,5 @@ class Lexer:
             if line.value.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
                 lines[i].value = line.value.replace(" ", "")
 
+        # print(pairs)
         return lines
