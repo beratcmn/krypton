@@ -1,0 +1,13 @@
+değişken x;
+değişken y;
+
+x = 1;
+y = 2;
+
+eğer (x > y){
+    yazdır("x y'den büyük");
+}değilse ve (y > x) {
+    yazdır("y x'den büyük");
+}değilse{
+    yazdır("x ve y eşit");
+}
