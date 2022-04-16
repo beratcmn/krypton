@@ -1,9 +1,9 @@
 # Programı okuyup düzgün hale getirmekten sorumlu
+from classes.Line import Line
 
 
 class Reader:
     def ReadInputCode(filePath: str):
-        #input_file = open("gramer.kr", "r", encoding="utf-8")
         input_file = open(filePath, "r", encoding="utf-8")  # ? Debug
 
         input_code = input_file.read().rstrip()
@@ -11,6 +11,8 @@ class Reader:
         lines = [l.strip() for l in input_code.splitlines()]
         currentLevel = 0
         levels = []
+
+        lineObjects = []
 
         for line in lines:
             if line == "}":
@@ -25,4 +27,7 @@ class Reader:
 
         input_file.close()
 
-        return input_code, levels
+        for i in range(len(lines)):
+            lineObjects.append(Line(i, levels[i][1], lines[i]))
+
+        return lineObjects

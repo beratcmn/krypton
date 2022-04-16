@@ -1,1 +1,1 @@
-yazdır("Merhaba, Dünya!");
+yazdır ("Merhaba, Dünya!");

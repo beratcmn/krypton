@@ -29,20 +29,12 @@ def main():
 
     input_file_path = str(args[0])
 
-    input_code, levels = Reader.ReadInputCode(input_file_path)
-    tokens, string_hashes = Lexer.Tokenize(_inputCode=input_code, _levels=levels)
-    parsed_code = Parser.Parse(tokens, levels, string_hashes)
+    inputLines = Reader.ReadInputCode(input_file_path)
 
-    if debug == True:
-        print("Source Code:")
-        print(input_code)
-        print("\nLex Result:")
-        ShowTokens(tokens, levels)
-        print("\nParse Result:")
-        print(parsed_code)
-        print("Output:")
+    lex = Lexer.Lex(inputLines)
 
-    Compiler.Compile(parsed_code)
+    for l in lex:
+        print(l)
 
 
 if __name__ == "__main__":
