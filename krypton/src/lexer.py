@@ -1,7 +1,8 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
-from classes.Token import Token
 from classes.Line import Line
 from classes.Pairs import pairs
+
+from classes.Tokens import *
 
 
 class Lexer:
@@ -37,19 +38,6 @@ class Lexer:
 
         # ? Lexing
         for line in lines:
-            # print(line)
-
-            end = 0
-
-            while end < len(line.value):
-
-                if line.value[0:end] in pairs:
-                    value = line.value[0:end]
-
-                    if value == "değişken":
-                        tokens.append(Token(line.line, pairs[value], value))
-                        
-
-                end = end + 1
+            pass
 
         return tokens

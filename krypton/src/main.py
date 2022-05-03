@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Bütün her şeyi birleştirmekten sorumlu
 
 from reader import Reader
@@ -7,18 +8,27 @@ from compiler import Compiler
 from writer import Writer
 from shell import Shell
 
-import sys
+from classes.Line import Line
 
-debug = False
+import sys
+import os
+
+debug = True
 
 reserved_args = [
     "--çalıştırma",
 ]
 
 
-def ShowTokens(tokens, levels):
-    for i in range(0, len(tokens)):
-        print(str(i+1) + ": " + str(tokens[i]) + " Level: " + str(levels[i][1]))
+def Debug(input_lines, tokens):
+    os.system("cls")  # ? Windows Only
+    print("--- Input Lines ---")
+    for _il in input_lines:
+        print(_il)
+
+    print("\n--- Tokens ---")
+    for token in tokens:
+        print(token)
 
 
 def main():
@@ -29,12 +39,12 @@ def main():
 
     input_file_path = str(args[0])
 
-    inputLines = Reader.ReadInputCode(input_file_path)
+    input_lines: list[Line] = Reader.ReadInputCode(input_file_path)
 
-    tokens = Lexer.Lex(inputLines)
+    tokens = Lexer.Lex(input_lines)
 
-    for token in tokens:
-        print(token)
+    if debug == True:
+        Debug(input_lines, tokens)
 
 
 if __name__ == "__main__":

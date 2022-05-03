@@ -4,6 +4,9 @@ from dataclasses import dataclass
 @dataclass
 class Token:
     line: int
-    # level: int
-    type: str
+
+
+@dataclass
+class VAR_DECLERATION(Token):
+    name: str
     value: object
