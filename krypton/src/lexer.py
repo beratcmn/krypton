@@ -4,8 +4,6 @@ from classes.Pairs import pairs
 
 from classes.Tokens import *
 
-tokens = []  # ? Functions access this object so it has to be public
-
 
 def Lexize(line: Line):
     pass
@@ -15,8 +13,9 @@ class Lexer:
     stringHashes = {}
 
     def Lex(_lines: list[Line]):
-        global tokens
+
         lines = [l for l in _lines]
+        tokens = []
 
         # ? Hashing Strings
         for i, line in enumerate(lines):
@@ -43,18 +42,44 @@ class Lexer:
 
         # ? Lexing
         for line in lines:
-            Lexize(line)  # ? Lexize is a function because recursion is needed
+            tokens.append(Lexize(line))  # ? Lexize is a function because recursion is needed
 
         return tokens
 
 
-def Lexize(line: Line):
+def Lexize(line: Line) -> Token:
     _value = line.value
+    _value = _value.replace("{", "").replace("}", "")
 
     # ? Var decleration
     if _value[0:8] == "değişken":
         if "=" in _value:  # ? Non-Null
             parts = _value.partition("=")
-            tokens.append(VAR_DECLERATION(line.line, parts[0][8:], parts[2]))
+            return VAR_DECLERATION(line.line, parts[0][8:], parts[2])
         else:  # ? Null
-            tokens.append(VAR_DECLERATION(line.line, _value[8:], None))
+            return VAR_DECLERATION(line.line, _value[8:], None)
+
+    # ? Define Function
+    if _value[0:9] == "fonksiyon" or _value[0:2] == "fn":
+        if _value[0:9] == "fonksiyon":
+            _value = _value[9:]
+            parts = _value.partition("(")
+            params = parts[2][:-1].split(",")
+            return DEFINE_FUNCTION(line.line, parts[0], params)
+        elif _value[0:2] == "fn":
+            _value = _value[2:]
+            parts = _value.partition("(")
+            return DEFINE_FUNCTION(line.line, parts[0], parts[2][:-1])
+
+    # ? Invoke Function
+    if (_value[0:9] != "fonksiyon" or _value[0:2] != "fn") and "(" in _value:
+        parts = _value.partition("(")
+        params_str = parts[2][:-1].split(",")
+        param_objects = []
+
+        for p in params_str:
+            param_objects.append(Lexize(Line(line.line, line.level, p)))
+
+        return INVOKE_FUNCTION(line.line, parts[0], param_objects)
+
+    return _value
