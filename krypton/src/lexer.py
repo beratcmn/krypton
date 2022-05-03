@@ -4,14 +4,19 @@ from classes.Pairs import pairs
 
 from classes.Tokens import *
 
+tokens = []  # ? Functions access this object so it has to be public
+
+
+def Lexize(line: Line):
+    pass
+
 
 class Lexer:
     stringHashes = {}
 
     def Lex(_lines: list[Line]):
-
+        global tokens
         lines = [l for l in _lines]
-        tokens = []
 
         # ? Hashing Strings
         for i, line in enumerate(lines):
@@ -38,14 +43,18 @@ class Lexer:
 
         # ? Lexing
         for line in lines:
-            _value = line.value
-
-            # ? Var decleration
-            if _value[0:8] == "değişken":
-                if "=" in _value:  # ? Non-Null
-                    parts = _value.partition("=")
-                    tokens.append(VAR_DECLERATION(line.line, parts[0][8:], parts[2]))
-                else:  # ? Null
-                    tokens.append(VAR_DECLERATION(line.line, _value[8:], None))
+            Lexize(line)  # ? Lexize is a function because recursion is needed
 
         return tokens
+
+
+def Lexize(line: Line):
+    _value = line.value
+
+    # ? Var decleration
+    if _value[0:8] == "değişken":
+        if "=" in _value:  # ? Non-Null
+            parts = _value.partition("=")
+            tokens.append(VAR_DECLERATION(line.line, parts[0][8:], parts[2]))
+        else:  # ? Null
+            tokens.append(VAR_DECLERATION(line.line, _value[8:], None))
