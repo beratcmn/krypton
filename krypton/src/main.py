@@ -21,7 +21,6 @@ reserved_args = [
 
 
 def Debug(input_lines, tokens):
-    os.system("cls")  # ? Windows Only
     print("--- Input Lines ---")
     for _il in input_lines:
         print(_il)
@@ -34,6 +33,9 @@ def Debug(input_lines, tokens):
 def main():
     global debug
     global reserved_args
+
+    if debug:
+        os.system("cls")  # ? Windows Only
 
     args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
 

@@ -1,3 +1,4 @@
 değişken x
+değişken y = 5
 yazdır ("Merhaba, Dünya!")
 yazdır("İlk Krypton programım!")

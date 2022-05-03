@@ -38,6 +38,14 @@ class Lexer:
 
         # ? Lexing
         for line in lines:
-            pass
+            _value = line.value
+
+            # ? Var decleration
+            if _value[0:8] == "değişken":
+                if "=" in _value:  # ? Non-Null
+                    parts = _value.partition("=")
+                    tokens.append(VAR_DECLERATION(line.line, parts[0][8:], parts[2]))
+                else:  # ? Null
+                    tokens.append(VAR_DECLERATION(line.line, _value[8:], None))
 
         return tokens
