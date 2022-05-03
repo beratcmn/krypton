@@ -31,10 +31,10 @@ def main():
 
     inputLines = Reader.ReadInputCode(input_file_path)
 
-    lex = Lexer.Lex(inputLines)
+    tokens = Lexer.Lex(inputLines)
 
-    for l in lex:
-        print(l)
+    for token in tokens:
+        print(token)
 
 
 if __name__ == "__main__":

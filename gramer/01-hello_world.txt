@@ -1,1 +1,2 @@
+değişken x;
 yazdır ("Merhaba, Dünya!");

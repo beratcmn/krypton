@@ -1,4 +1,5 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
+from classes.Token import Token
 from classes.Line import Line
 from classes.Pairs import pairs
 
@@ -9,6 +10,7 @@ class Lexer:
     def Lex(_lines: list[Line]):
 
         lines = [l for l in _lines]
+        tokens = []
 
         # ? Hashing Strings
         for i, line in enumerate(lines):
@@ -33,5 +35,21 @@ class Lexer:
             if line.value.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
                 lines[i].value = line.value.replace(" ", "")
 
-        # print(pairs)
-        return lines
+        # ? Lexing
+        for line in lines:
+            # print(line)
+
+            end = 0
+
+            while end < len(line.value):
+
+                if line.value[0:end] in pairs:
+                    value = line.value[0:end]
+
+                    if value == "değişken":
+                        tokens.append(Token(line.line, pairs[value], value))
+                        
+
+                end = end + 1
+
+        return tokens

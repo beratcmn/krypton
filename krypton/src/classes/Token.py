@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Token:
-    level: int
+    line: int
+    # level: int
     type: str
     value: object
