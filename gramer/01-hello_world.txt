@@ -1,2 +1,3 @@
-değişken x;
-yazdır ("Merhaba, Dünya!");
+değişken x
+yazdır ("Merhaba, Dünya!")
+yazdır("İlk Krypton programım!")
