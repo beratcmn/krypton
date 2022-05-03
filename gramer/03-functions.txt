@@ -1,0 +1,15 @@
+fonksiyon selam(){
+    yazdır("selam")
+}
+
+fonksiyon naber(){
+    yazdır("naber nasılsın?")
+}
+
+f kısa_naber(){
+    yazdır("nassın")
+}
+
+selam()
+naber()
+kısa_naber()
