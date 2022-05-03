@@ -6,7 +6,7 @@ fonksiyon naber(){
     yazdır("naber nasılsın?")
 }
 
-f kısa_naber(){
+fn kısa_naber(){
     yazdır("nassın")
 }
 
