@@ -54,4 +54,4 @@ if __name__ == "__main__":
     start = timeit.default_timer()
     main()
     stop = timeit.default_timer()
-    print('Derleme Süresi:', stop - start)
+    print('\nDerleme Süresi:', stop - start, "saniye")
