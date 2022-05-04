@@ -10,6 +10,7 @@ from shell import Shell
 
 from classes.Line import Line
 
+import timeit
 import sys
 import os
 
@@ -50,4 +51,7 @@ def main():
 
 
 if __name__ == "__main__":
+    start = timeit.default_timer()
     main()
+    stop = timeit.default_timer()
+    print('Derleme Süresi:', stop - start)
