@@ -40,3 +40,13 @@ class CONDITION:
 @dataclass
 class IF(Token):
     condition: CONDITION
+
+
+@dataclass
+class ELSE_IF(Token):
+    condition: CONDITION
+
+
+@dataclass
+class ELSE(Token):
+    pass

@@ -44,6 +44,10 @@ class Lexer:
         for line in lines:
             tokens.append(Lexize(line))  # ? Lexize is a function because recursion is needed
 
+            # for t in tokens:
+            #     if t == None or t == "":
+            #         tokens.remove(t)
+
         return tokens
 
 
@@ -102,6 +106,36 @@ def Lexize(line: Line) -> Token:
         newCondition.second = Lexize(Line(-1, -1, parts[2]))
 
         return IF(line.line, newCondition)
+
+    # ? Else If
+    if _value[0:9] == "değilseve":
+        _value = _value[9:]
+        condition_string = _value[1:-1]
+
+        parts = []
+        newCondition = CONDITION(None, None, None)
+
+        if ">" in condition_string:
+            parts = condition_string.partition(">")
+            newCondition.operator = ">"
+        elif "<" in condition_string:
+            parts = condition_string.partition("<")
+            newCondition.operator = "<"
+        elif "==" in condition_string:
+            parts = condition_string.partition("==")
+            newCondition.operator = "=="
+        elif "!=" in condition_string:
+            parts = condition_string.partition("!=")
+            newCondition.operator = "!="
+
+        newCondition.first = Lexize(Line(-1, -1, parts[0]))
+        newCondition.second = Lexize(Line(-1, -1, parts[2]))
+
+        return ELSE_IF(line.line, newCondition)
+
+    # ? Else
+    if _value[0:9] != "değilseve" and _value[0:7] == "değilse":
+        return ELSE(line.line)
 
     # ? Invoke Function
     if (_value[0:9] != "fonksiyon" or _value[0:2] != "fn") and "(" in _value:
