@@ -48,6 +48,17 @@ class Lexer:
             #     if t == None or t == "":
             #         tokens.remove(t)
 
+        # ? Revert String Hashes
+        for t in tokens:
+            try:
+                if isinstance(t, VAR_DECLERATION) == True:
+                    t.value = RevertStringHashes(t.value)
+                elif isinstance(t, INVOKE_FUNCTION) == True:
+                    for i in t.function_params:
+                        t.function_params[t.function_params.index(i)] = RevertStringHashes(i)
+            except:
+                pass
+
         return tokens
 
 
@@ -149,3 +160,13 @@ def Lexize(line: Line) -> Token:
         return INVOKE_FUNCTION(line.line, parts[0], param_objects)
 
     return _value
+
+
+def RevertStringHashes(_val: str):
+    stringHashes = Lexer.stringHashes
+    for s in stringHashes:
+        s = str(s)
+        if s in _val:
+            return _val.replace(s, stringHashes[int(s)])
+
+    return _val
