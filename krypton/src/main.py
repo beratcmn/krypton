@@ -17,6 +17,7 @@ import os
 
 debug = False
 clear = False
+run = False
 
 reserved_args = [
     "--debug",
@@ -46,11 +47,15 @@ def Clear(clear: bool):
 def main():
     global debug
     global clear
+    global run
+
     args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
 
     debug = "--debug" in args
 
     clear = "--temiz" in args
+
+    run = "--çalıştırma" in args
 
     Clear(clear)
 
@@ -66,6 +71,8 @@ def main():
         pairs.append(Pair(input_lines[i], tokens[i]))
 
     output_code = Parser.Parse(pairs)
+
+    Compiler.Compile(output_code, run)
 
     if debug == True:
         Debug(input_lines, tokens, output_code)
