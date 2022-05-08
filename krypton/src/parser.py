@@ -26,6 +26,16 @@ def ParsePair(pair: Pair):
     if isinstance(pair.token, VAR_DECLERATION):
         line = pair.line.level * " " + pair.token.name + " = " + ParseToken(pair.token.value)
         return line
+    elif isinstance(pair.token, INVOKE_FUNCTION):
+        line = pair.line.level * " " + pair.token.function_name + "("
+        for p in pair.token.function_params:
+            if pair.token.function_params.index(p) != len(pair.token.function_params) - 1:
+                line = line + ParseToken(p) + ", "
+            else:
+                line = line + ParseToken(p)
+
+        line = line + ")"
+        return line
 
 
 def ParseToken(token: Token):
@@ -38,5 +48,5 @@ def ParseToken(token: Token):
             else:
                 word = word + str(p)
         word = word + ")"
-        return word
+        return str(word)
     return str(token)
