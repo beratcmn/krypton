@@ -165,6 +165,6 @@ def RevertStringHashes(_val: str):
     for s in stringHashes:
         s = str(s)
         if s in _val:
-            return _val.replace(s, stringHashes[int(s)])
+            return _val.replace(s, '"' + stringHashes[int(s)] + '"')
 
     return _val
