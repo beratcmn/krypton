@@ -25,7 +25,7 @@ reserved_args = [
 ]
 
 
-def Debug(input_lines, tokens):
+def Debug(input_lines, tokens, output_code):
     print("--- Input Lines ---")
     for _il in input_lines:
         print(_il)
@@ -33,6 +33,9 @@ def Debug(input_lines, tokens):
     print("\n--- Tokens ---")
     for token in tokens:
         print(token)
+
+    print("\n--- Output Code ---")
+    print(output_code)
 
 
 def Clear(clear: bool):
@@ -65,7 +68,7 @@ def main():
     output_code = Parser.Parse(pairs)
 
     if debug == True:
-        Debug(input_lines, tokens)
+        Debug(input_lines, tokens, output_code)
 
 
 if __name__ == "__main__":

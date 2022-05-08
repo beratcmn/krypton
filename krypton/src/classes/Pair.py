@@ -6,4 +6,4 @@ from classes.Line import Line
 @dataclass
 class Pair:
     line: Line
-    token: Token
+    token: object
