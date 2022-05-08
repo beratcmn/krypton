@@ -1,7 +1,5 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
 from classes.Line import Line
-from classes.Pairs import pairs
-
 from classes.Tokens import *
 
 
@@ -12,7 +10,7 @@ def Lexize(line: Line):
 class Lexer:
     stringHashes = {}
 
-    def Lex(_lines: list[Line]):
+    def Lex(_lines: list[Line]) -> list[Token]:
 
         lines = [l for l in _lines]
         tokens = []
