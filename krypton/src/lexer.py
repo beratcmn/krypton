@@ -1,45 +1,25 @@
 # Dili analiz etme ve token'larına ayırmaktan sorumlu
+from classes.Line import Line
+from classes.Tokens import *
+
+
+def Lexize(line: Line):
+    pass
 
 
 class Lexer:
-    debug = False
-
-    tokenTypes = [
-        "DEFINE_CLASS",         # 0
-        "DEFINE_FUNCTION",      # 1
-        "INVOKE_FUNCTION",      # 2
-        "VAR_ASSIGN",           # 3
-        "VAR_ASSIGN_NULL",      # 4
-        "IF",                   # 5
-        "ELSE_IF",              # 6
-        "ELSE",                 # 7
-        "FULL_COMMENT",         # 8
-        "IMPORT_MODULE",        # 9
-        "IMPORT_PART",          # 10
-    ]
-
-    reserved = [
-        "fonksiyon",
-        "eğer",
-        "değilse ve",
-        "değilseve",
-        "değilse",
-        "ekle"
-    ]
-
     stringHashes = {}
 
-    def Tokenize(_inputCode: str, _levels: list):
+    def Lex(_lines: list[Line]) -> list[Token]:
 
-        lines = [l.strip() for l in _inputCode.splitlines()]
-
+        lines = [l for l in _lines]
         tokens = []
 
-        # ? String hashes
-        for line in lines:
+        # ? Hashing Strings
+        for i, line in enumerate(lines):
             start = 0
             end = 0
-            xline = line
+            xline = line.value
             while end <= len(xline):
                 if xline[end:end+1] == '"':
                     while '"' in xline:
@@ -51,133 +31,140 @@ class Lexer:
                         xline = xline.replace(xline[start: end], str(hash(xline[start: end])))
                 end = end + 1
 
-            lines[lines.index(line)] = xline
+            lines[i].value = xline
 
         # ? Remove whitespaces
         for i, line in enumerate(lines):
-            if line.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
-                lines[i] = line.replace(" ", "")
+            if line.value.replace(" ", "")[0:2] != "//":  # ? Yorum satırlarını olduğu gibi bırakması için böyle yaptım
+                lines[i].value = line.value.replace(" ", "")
 
-        if Lexer.debug == True:
-            print("Without whitespaces:")
-            for line in lines:
-                print(line)
-
-        # ? Tokenizing
+        # ? Lexing
         for line in lines:
-            start = 0
-            end = 0
-            newToken = []
+            tokens.append(Lexize(line))  # ? Lexize is a function because recursion is needed
 
-            while end <= len(line):
-                end = end + 1
+            # for t in tokens:
+            #     if t == None or t == "":
+            #         tokens.remove(t)
 
-                # ? Full line Comment
-                if line[0:2] == "//":
-                    newToken.append(Lexer.tokenTypes[8])
-                    newToken.append(line.replace("//", "", 1))
-                    break
+        # ? Revert String Hashes
+        for t in tokens:
+            try:
+                if isinstance(t, VAR_DECLERATION) == True:
+                    t.value = RevertStringHashes(t.value)
+                elif isinstance(t, INVOKE_FUNCTION) == True:
+                    for i in t.function_params:
+                        t.function_params[t.function_params.index(i)] = RevertStringHashes(i)
+            except:
+                pass
 
-                # ? Brackets
-                if line == "{":
-                    newToken.append("{")
-                    break
-                if line == "}":
-                    newToken.append("}")
-                    break
-                if line == "":
-                    newToken.append("")
-                    break
+        return tokens
 
-                # ? Import
-                if line[start:end] == "ekle" and ">" not in line:
-                    start = end
-                    newToken.append(Lexer.tokenTypes[9])
-                    newToken.append(line.partition("ekle")[2][0:-1])
-                    break
 
-                # ? Import Part
-                if line[start:end] == "ekle" and ">" in line:
-                    start = end
-                    realPart = line.partition("ekle")[2][0:-1]
+def Lexize(line: Line) -> Token:
+    _value = line.value
+    _value = _value.replace("{", "").replace("}", "")
 
-                    newToken.append(Lexer.tokenTypes[10])
-                    newToken.append(realPart.rpartition(">")[0].replace(">", "."))
-                    newToken.append(realPart.rpartition(">")[2])
-                    break
+    # ? Var Decleration
+    if _value[0:8] == "değişken":
+        if "=" in _value:  # ? Non-Null
+            parts = _value.partition("=")
+            var_value = Lexize(Line(-1, -1, parts[2]))  # ? When line and level are == -1 means its on the same line
+            return VAR_DECLERATION(line.line, parts[0][8:], var_value)
+        else:  # ? Null
+            return VAR_DECLERATION(line.line, _value[8:], None)
 
-                # ? Var Assign
-                if line[start:end] == "değişken":
-                    start = end
+    # ? Var Assign
+    if "=" in _value and "==" not in _value:
+        parts = _value.partition("=")
+        return VAR_ASSIGN(line.line, parts[0], Lexize(Line(-1, -1, parts[2])))
 
-                    # ? Find var name
-                    if "=" in line:
-                        newToken.append(Lexer.tokenTypes[3])
-                        newToken.append(line[start:len(line)-1].partition("=")[0].strip())
-                        newToken.append(line[start:len(line)-1].partition("=")[2].strip())
-                    else:
-                        newToken.append(Lexer.tokenTypes[4])
-                        newToken.append(line[start:len(line)-1].partition("değişken")[0].strip())
-                    break
+    # ? Define Function
+    if _value[0:9] == "fonksiyon" or _value[0:2] == "fn":
+        if _value[0:9] == "fonksiyon":
+            _value = _value[9:]
+            parts = _value.partition("(")
+            params = parts[2][:-1].split(",")
+            return DEFINE_FUNCTION(line.line, parts[0], params)
+        elif _value[0:2] == "fn":
+            _value = _value[2:]
+            parts = _value.partition("(")
+            return DEFINE_FUNCTION(line.line, parts[0], parts[2][:-1])
 
-                # ? Class
-                if line[start:end] == "sınıf":
-                    start = end
-                    newToken.append(Lexer.tokenTypes[0])
-                    newToken.append(line.partition("sınıf")[2].strip().replace("{", ""))
-                    break
+    # ? If
+    if _value[0:4] == "eğer":
+        _value = _value[4:]
+        condition_string = _value[1:-1]
 
-                # ? Define function
-                if line[start:end] == "fonksiyon":
-                    start = end
-                    newToken.append(Lexer.tokenTypes[1])
+        parts = []
+        newCondition = CONDITION(None, None, None)
 
-                    while end <= len(line):
-                        end = end + 1
+        if ">" in condition_string:
+            parts = condition_string.partition(">")
+            newCondition.operator = ">"
+        elif "<" in condition_string:
+            parts = condition_string.partition("<")
+            newCondition.operator = "<"
+        elif "==" in condition_string:
+            parts = condition_string.partition("==")
+            newCondition.operator = "=="
+        elif "!=" in condition_string:
+            parts = condition_string.partition("!=")
+            newCondition.operator = "!="
 
-                        # ? Find function name
-                        if line[end:end+1] == "(":
-                            newToken.append(line[start:end].strip())
-                            start = end
+        newCondition.first = Lexize(Line(-1, -1, parts[0]))
+        newCondition.second = Lexize(Line(-1, -1, parts[2]))
 
-                        # ? Find props
-                        if line[end-1:end] == ")":
-                            newToken.append(line[start+1:end-1].strip())
-                            start = end
-                    break
+        return IF(line.line, newCondition)
 
-                # ? Invoke Function
-                if line[start:end].strip() not in Lexer.reserved and line[end:end+1] == "(" and line[start:end] != " " and line[start:end] != "":
-                    newToken.append(Lexer.tokenTypes[2])
-                    newToken.append(line[start:end])
-                    start = end
+    # ? Else If
+    if _value[0:9] == "değilseve":
+        _value = _value[9:]
+        condition_string = _value[1:-1]
 
-                    while end <= len(line):
-                        end = end + 1
-                        # ? Find props
-                        if line[end-1:end] == ")":
-                            newToken.append(line[start+1:end-1].strip())
-                            start = end
+        parts = []
+        newCondition = CONDITION(None, None, None)
 
-                # ? If
-                if line[start:end] == "eğer":
-                    start = end
-                    newToken.append(Lexer.tokenTypes[5])
-                    newToken.append(line.partition("eğer")[2].strip().replace("{", ""))
-                    break
+        if ">" in condition_string:
+            parts = condition_string.partition(">")
+            newCondition.operator = ">"
+        elif "<" in condition_string:
+            parts = condition_string.partition("<")
+            newCondition.operator = "<"
+        elif "==" in condition_string:
+            parts = condition_string.partition("==")
+            newCondition.operator = "=="
+        elif "!=" in condition_string:
+            parts = condition_string.partition("!=")
+            newCondition.operator = "!="
 
-                # ? Else If
-                if line[start:end] == "değilseve":
-                    start = end
-                    newToken.append(Lexer.tokenTypes[6])
-                    newToken.append(line.partition("değilseve")[2].strip().replace("{", ""))
-                    break
+        newCondition.first = Lexize(Line(-1, -1, parts[0]))
+        newCondition.second = Lexize(Line(-1, -1, parts[2]))
 
-                # ? Else
-                if line[start:end] == "değilse" and line[start:end + 2] != "değilseve":
-                    start = end
-                    newToken.append(Lexer.tokenTypes[7])
-                    break
+        return ELSE_IF(line.line, newCondition)
 
-            tokens.append(newToken)
-        return tokens, Lexer.stringHashes
+    # ? Else
+    if _value[0:9] != "değilseve" and _value[0:7] == "değilse":
+        return ELSE(line.line)
+
+    # ? Invoke Function
+    if (_value[0:9] != "fonksiyon" or _value[0:2] != "fn") and "(" in _value:
+        parts = _value.partition("(")
+        params_str = parts[2][:-1].split(",")
+        param_objects = []
+
+        for p in params_str:
+            param_objects.append(Lexize(Line(-1, -1, p)))
+
+        return INVOKE_FUNCTION(line.line, parts[0], param_objects)
+
+    return _value
+
+
+def RevertStringHashes(_val: str):
+    stringHashes = Lexer.stringHashes
+    for s in stringHashes:
+        s = str(s)
+        if s in _val:
+            return _val.replace(s, '"' + stringHashes[int(s)] + '"')
+
+    return _val

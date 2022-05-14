@@ -1,90 +1,73 @@
 # Tokenleri işlenebilir hale getirmekten sorumlu
+from classes.Tokens import *
+from classes.Pair import Pair
+
+
+def ParsePair(pair: Pair):
+    pass
+
+
+def ParseToken(token: Token):
+    pass
+
 
 class Parser:
-    def Parse(_tokens: list, _levels: list, _string_hashes: dict) -> str:
-        parsed_lines = []
+    def Parse(pairs: list[Pair]) -> str:
         output_code = ""
 
-        # ? Hash to string
-        for token in _tokens:
-            for part in token:
-                for h in _string_hashes:
-                    if str(h) in part:
-                        token[token.index(part)] = '"' + (_string_hashes[h]) + '"'
+        output_code = "from mithen import *\n"
 
-        for i, token in enumerate(_tokens):
-
-            line = ""
-            extraLine = ""
-
-            # ? Parse Class
-            if token[0] == "DEFINE_CLASS":
-                line = int(_levels[i][1]) * "    " + "class " + token[1] + ":"
-
-            # ? Parse Comment
-            elif token[0] == "FULL_COMMENT":
-                line = int(_levels[i][1]) * "    " + "#" + token[1]
-
-            # ? Parse Main Function Definition
-            elif token[0] == "DEFINE_FUNCTION" and token[1] == "Giriş":
-                line = int(_levels[i][1]) * "    " + "def Main" + "(" + token[2] + ")" + ":"
-
-            # ? Parse Empty Function Definition
-            elif token[0] == "DEFINE_FUNCTION" and ((_tokens[i + 1][0] == "" or _tokens[i + 1][0] == "}") and _levels[i + 1][1] >= _levels[i][1]):
-                line = int(_levels[i][1]) * "    " + "def " + token[1] + "(" + token[2] + ")" + ":"
-                extraLine = (int(_levels[i][1]) + 1) * "    " + "pass"
-
-            # ? Parse Normal Function Definition
-            elif token[0] == "DEFINE_FUNCTION":
-                line = int(_levels[i][1]) * "    " + "def " + token[1] + "(" + token[2] + ")" + ":"
-
-            # ? Parse Print Function Invoke
-            elif token[0] == "INVOKE_FUNCTION" and token[1] == "yazdır":
-                line = int(_levels[i][1]) * "    " + "print" + "(" + token[2] + ")"
-
-            # ? Parse Function Invoke
-            elif token[0] == "INVOKE_FUNCTION":
-                line = int(_levels[i][1]) * "    " + token[1] + "(" + token[2] + ")"
-
-            # ? Parse Var Assign
-            elif token[0] == "VAR_ASSIGN":
-                line = int(_levels[i][1]) * "    " + token[1] + " = " + token[2]
-
-            # ? Parse Var Assign Null
-            elif token[0] == "VAR_ASSIGN_NULL":
-                line = int(_levels[i][1]) * "    " + token[1] + " = " + "None"
-
-            # ? Parse If
-            elif token[0] == "IF":
-                line = int(_levels[i][1]) * "    " + "if" + " " + token[1] + ":"
-
-            # ? Parse If
-            elif token[0] == "ELSE_IF":
-                line = int(_levels[i][1]) * "    " + "elif" + " " + token[1] + ":"
-
-            # ? Parse Else
-            elif token[0] == "ELSE":
-                line = int(_levels[i][1]) * "    " + "else" + ":"
-
-            # ? Parse Import Module
-            elif token[0] == "IMPORT_MODULE":
-                # ! COMPILE THE IMPORTED FILE THEN PUT INTO THE CACHE
-                line = int(_levels[i][1]) * "    " + "import" + " " + token[1]
-
-            # ? Parse Import Part
-            elif token[0] == "IMPORT_PART":
-                # ! COMPILE THE IMPORTED FILE THEN PUT INTO THE CACHE
-                line = int(_levels[i][1]) * "    " + "from " + token[1] + " import " + token[2]
-
-            parsed_lines.append(line)
-            if extraLine != "":
-                parsed_lines.append(extraLine)
-
-        parsed_lines = [p for p in parsed_lines if p != ""]
-        parsed_lines.append('\nif __name__ == "__main__":')
-        parsed_lines.append('    Main()')
-
-        for p in parsed_lines:
-            output_code = output_code + p + "\n"
+        for pair in pairs:
+            line = ParsePair(pair)
+            output_code = output_code + str(line) + "\n"
 
         return output_code
+
+
+def ParsePair(pair: Pair):
+    if isinstance(pair.token, VAR_DECLERATION):
+        line = pair.line.level * " " + pair.token.name + " = " + ParseToken(pair.token.value)
+        return line
+    elif isinstance(pair.token, INVOKE_FUNCTION):
+        function_name = pair.token.function_name
+        if pair.token.function_name == "yazdır":
+            function_name = "print"
+        elif pair.token.function_name == "karekök":
+            function_name = "print"  # ! CHANGE LATER
+        else:
+            function_name = pair.token.function_name
+
+        line = pair.line.level * " " + function_name + "("
+
+        for p in pair.token.function_params:
+            if pair.token.function_params.index(p) != len(pair.token.function_params) - 1:
+                line = line + ParseToken(p) + ", "
+            else:
+                line = line + ParseToken(p)
+
+        line = line + ")"
+        return line
+
+
+def ParseToken(token: Token):
+    if isinstance(token, INVOKE_FUNCTION):
+        token: INVOKE_FUNCTION = token
+
+        function_name = token.function_name
+        if token.function_name == "yazdır":
+            function_name = "print"
+        elif token.function_name == "karekök":
+            # TODO Parse karekök func
+            function_name = "print"  # ! CHANGE LATER
+        else:
+            function_name = token.function_name
+
+        word = function_name + "("
+        for p in token.function_params:
+            if token.function_params.index(p) != len(token.function_params) - 1:
+                word = word + str(p) + ", "
+            else:
+                word = word + str(p)
+        word = word + ")"
+        return str(word)
+    return str(token)

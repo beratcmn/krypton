@@ -1,6 +1,0 @@
-fonksiyon Giriş(){
-    yazdır("Özberk naber kanka");
-    değişken x = 5;
-    yazdır(x + 6);
-    değişken berat;
-}
