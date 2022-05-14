@@ -15,6 +15,8 @@ class Parser:
     def Parse(pairs: list[Pair]) -> str:
         output_code = ""
 
+        output_code = "from mithen import *\n"
+
         for pair in pairs:
             line = ParsePair(pair)
             output_code = output_code + str(line) + "\n"
@@ -55,6 +57,7 @@ def ParseToken(token: Token):
         if token.function_name == "yazdır":
             function_name = "print"
         elif token.function_name == "karekök":
+            # TODO Parse karekök func
             function_name = "print"  # ! CHANGE LATER
         else:
             function_name = token.function_name
