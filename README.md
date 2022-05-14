@@ -52,17 +52,17 @@ Releases sekmesinde yayınlanan son Düzenleyici ve Derleyiciyi indirebilirsiniz
 ```
 sınıf ÜçgenAlanı{
     fonksiyon Giriş(){
-        değişken alan;
-        değişken u;
+        değişken alan
+        değişken u
 
-        değişken kenar1 = 3;
-        değişken kenar2 = 4;
-        değişken kenar3 = 5;
+        değişken kenar1 = 3
+        değişken kenar2 = 4
+        değişken kenar3 = 5
 
-        u = (kenar1 + kenar2 + kenar3) / 2;
-        alan = karekök(u * (u - kenar1) * (u - kenar2) * (u - kenar3));
+        u = (kenar1 + kenar2 + kenar3) / 2
+        alan = karekök(u * (u - kenar1) * (u - kenar2) * (u - kenar3))
 
-        yazdır(alan);
+        yazdır(alan)
     }
 }
 ```
