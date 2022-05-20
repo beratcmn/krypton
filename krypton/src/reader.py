@@ -28,6 +28,6 @@ class Reader:
         input_file.close()
 
         for i in range(len(lines)):
-            lineObjects.append(Line(i, levels[i][1], lines[i]))
+            lineObjects.append(Line(i, levels[i][1] + 0, lines[i]))
 
         return lineObjects

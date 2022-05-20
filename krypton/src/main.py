@@ -61,6 +61,8 @@ def main():
 
     input_file_path = str(args[0])
 
+    input_file_name = input_file_path.split("\\")[-1]
+
     input_lines: list[Line] = Reader.ReadInputCode(input_file_path)
 
     tokens = Lexer.Lex(input_lines)
@@ -70,7 +72,7 @@ def main():
     for i in range(len(input_lines)):
         pairs.append(Pair(input_lines[i], tokens[i]))
 
-    output_code = Parser.Parse(pairs)
+    output_code = Parser.Parse(pairs, input_file_name)
 
     Compiler.Compile(output_code, dont_run)
 
