@@ -14,7 +14,9 @@ fn cevap_ver(cevap){
     yazdır(cevap)
 }
 
-selam()
-naber()
-kısa_naber()
-cevap_ver("iyiyim")
+fonksiyon Giriş(){
+    selam()
+    naber()
+    kısa_naber()
+    cevap_ver("iyiyim")
+}

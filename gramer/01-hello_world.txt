@@ -1,4 +1,6 @@
-değişken x = "sa"
-değişken y = karekök(36)
-yazdır ("Merhaba, Dünya!")
-yazdır("İlk Krypton programım!")
+fonksiyon Giriş(){
+    değişken x = "sa"
+    değişken y = karekök(36)
+    yazdır ("Merhaba, Dünya!")
+    yazdır("İlk Krypton programım!")
+}

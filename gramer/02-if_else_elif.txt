@@ -1,18 +1,20 @@
-değişken x
-değişken y
-
-x = 1
-y = 2
-z = kare(9)
-
-eğer (x > y){
-    yazdır("x y'den büyük")
-} değilse ve (y > x){
-    yazdır("y x'den büyük")
-} değilse{
-    yazdır("x ve y eşit")
-}
-
-eğer(5 < kare(2)){
-    yazdır("sa")
+fonksiyon Giriş(){
+    değişken x
+    değişken y
+    
+    x = 1
+    y = 2
+    z = kare(9)
+    
+    eğer (x > y){
+        yazdır("x y'den büyük")
+    } değilse ve (y > x){
+        yazdır("y x'den büyük")
+    } değilse{
+        yazdır("x ve y eşit")
+    }
+    
+    eğer(5 < kare(2)){
+        yazdır("sa")
+    }
 }
