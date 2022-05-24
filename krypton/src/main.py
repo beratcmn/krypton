@@ -22,23 +22,17 @@ clear = False
 dont_run = False
 args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
 
-reserved_args = [
-    "--yardım"
-    "--debug",
-    "--çalıştırma",
-    "--temiz",
-]
-
 
 def Help():
     # ? \033[F == \n tersi
-    help_info = """
-\033[FKomut satırı argümanları:
+    help_info = """...
+Komut satırı argümanları:
 
 --yardım --y: Yardım mesajını görüntüler.
 --versiyon --v: Mevcut Krypton sürümünü görüntüler.
 --çalıştırma --çm : Programı derledikten sonra dosyayı mevcut yola getirir ancak çalıştırmaz.
 --debug --d: Programın derlenmeden önce geçtiği aşamaları gösterir. 
+--temiz : Programı çalıştırmadan önce konsolu temizler.
 """
     print(help_info)
 
@@ -66,6 +60,7 @@ def Debug(input_lines, tokens, output_code):
 
     print("\n--- Output Code ---")
     print(output_code)
+    print("-- Output Code End --")
 
 
 def Clear(clear: bool):
@@ -80,11 +75,11 @@ def CLI():
     global args
     global reserved_args
 
-    debug = "--debug" or "--d" in args
+    debug = "--debug" in args or "--d" in args
 
-    clear = "--temiz" in args
+    clear = "--temiz" in args or "--t" in args
 
-    dont_run = "--çalıştırma" in args
+    dont_run = "--çalıştırma" in args or "--çm" in args
 
     if len(args) == 1:
         _arg = args[0]
@@ -94,6 +89,8 @@ def CLI():
                 reserved_args[_ra]()
                 sys.exit()
 
+    Clear(clear)
+
 
 def main():
     global debug
@@ -102,8 +99,6 @@ def main():
     global args
 
     CLI()
-
-    Clear(clear)
 
     input_file_path = str(args[0])
 

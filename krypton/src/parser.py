@@ -25,12 +25,12 @@ class Parser:
 
         for pair in pairs:
             line = ParsePair(pair)
-            output_code = output_code + str(line) + "\n"
+            if line != None:
+                output_code = output_code + str(line) + "\n"
 
         # output_code += '\nif __name__ == "__main__":\n'
         # output_code += "    " + main_class_name+".Main()"
-
-        return output_code
+        return output_code.strip()
 
 
 def ParsePair(pair: Pair):
@@ -62,6 +62,8 @@ def ParsePair(pair: Pair):
         line = pair.line.level * "    " + "def " + _func_name + \
             "(" + str(pair.token.function_params)[1:-1].replace("'", "") + "):"
         return line
+    elif pair.line.value == "}" or pair.line.value == "{":
+        return
 
 
 def ParseToken(token: Token):
