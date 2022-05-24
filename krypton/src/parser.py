@@ -21,7 +21,7 @@ class Parser:
         output_code = ""
 
         output_code += "from mithen import *\n\n"
-        # output_code += "class " + main_class_name + ":" + "\n"
+        # output_code += "def " + "Main()" + ":" + "\n"
 
         for pair in pairs:
             line = ParsePair(pair)
@@ -56,6 +56,12 @@ def ParsePair(pair: Pair):
 
         line = line + ")"
         return line
+    elif isinstance(pair.token, DEFINE_FUNCTION):
+        _func_name = "Main" if pair.token.function_name == "Giriş" else pair.token.function_name
+
+        line = pair.line.level * "    " + "def " + _func_name + \
+            "(" + str(pair.token.function_params)[1:-1].replace("'", "") + "):"
+        return line
 
 
 def ParseToken(token: Token):
@@ -66,8 +72,7 @@ def ParseToken(token: Token):
         if token.function_name == "yazdır":
             function_name = "print"
         elif token.function_name == "karekök":
-            # TODO Parse karekök func
-            function_name = "print"  # ! CHANGE LATER
+            function_name = "karekok"  # ! CHANGE LATER
         else:
             function_name = token.function_name
 
