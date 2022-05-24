@@ -15,15 +15,44 @@ import timeit
 import sys
 import os
 
+VERSION = "0.0.1a"
+
 debug = False
 clear = False
 dont_run = False
+args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
 
 reserved_args = [
+    "--yardım"
     "--debug",
     "--çalıştırma",
     "--temiz",
 ]
+
+
+def Help():
+    # ? \033[F == \n tersi
+    help_info = """
+\033[FKomut satırı argümanları:
+
+--yardım --y: Yardım mesajını görüntüler.
+--versiyon --v: Mevcut Krypton sürümünü görüntüler.
+--çalıştırma --çm : Programı derledikten sonra dosyayı mevcut yola getirir ancak çalıştırmaz.
+--debug --d: Programın derlenmeden önce geçtiği aşamaları gösterir. 
+"""
+    print(help_info)
+
+
+def Version():
+    print("Krypton derleyicisi Versiyon: " + VERSION)
+
+
+reserved_args = {
+    "--yardım": Help,
+    "--y": Help,
+    "--versiyon": Version,
+    "--v": Version
+}
 
 
 def Debug(input_lines, tokens, output_code):
@@ -44,18 +73,35 @@ def Clear(clear: bool):
         os.system("cls")
 
 
-def main():
+def CLI():
     global debug
     global clear
     global dont_run
+    global args
+    global reserved_args
 
-    args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
-
-    debug = "--debug" in args
+    debug = "--debug" or "--d" in args
 
     clear = "--temiz" in args
 
     dont_run = "--çalıştırma" in args
+
+    if len(args) == 1:
+        _arg = args[0]
+
+        for _ra in reserved_args:
+            if _arg == _ra:
+                reserved_args[_ra]()
+                sys.exit()
+
+
+def main():
+    global debug
+    global clear
+    global dont_run
+    global args
+
+    CLI()
 
     Clear(clear)
 
