@@ -60,7 +60,7 @@ def Debug(input_lines, tokens, output_code):
 
     print("\n--- Output Code ---")
     print(output_code)
-    print("-- Output Code End --")
+    print("--- Output Code End ---")
 
 
 def Clear(clear: bool):
