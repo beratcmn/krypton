@@ -22,6 +22,11 @@ clear = False
 dont_run = False
 args = sys.argv[1:]  # ilk argüman kendisi olduğu için onu almıyoruz
 
+compile_time_start = 0
+compile_time_end = 0
+run_time_start = 0
+run_time_end = 0
+
 
 def Help():
     # ? \033[F == \n tersi
@@ -38,7 +43,7 @@ Komut satırı argümanları:
 
 
 def Version():
-    print("Krypton derleyicisi Versiyon: " + VERSION)
+    print(f"Krypton Derleyicisi Versiyon: {VERSION}")
 
 
 reserved_args = {
@@ -97,8 +102,14 @@ def main():
     global clear
     global dont_run
     global args
+    global compile_time_start
+    global compile_time_end
+    global run_time_start
+    global run_time_end
 
     CLI()
+
+    compile_time_start = timeit.default_timer()
 
     input_file_path = str(args[0])
 
@@ -115,14 +126,19 @@ def main():
 
     output_code = Parser.Parse(pairs, input_file_name)
 
+    compile_time_end = timeit.default_timer()
+
+    run_time_start = timeit.default_timer()
+
     Compiler.Compile(output_code, dont_run)
+
+    run_time_end = timeit.default_timer()
 
     if debug == True:
         Debug(input_lines, tokens, output_code)
 
 
 if __name__ == "__main__":
-    start = timeit.default_timer()
     main()
-    stop = timeit.default_timer()
-    print('\nDerleme Süresi:', stop - start, "saniye.")
+    print('\nDerleme Süresi:', compile_time_end - compile_time_start,
+          "saniye.", "\nÇalıştırma Süresi:", run_time_end-run_time_start, "saniye.")
