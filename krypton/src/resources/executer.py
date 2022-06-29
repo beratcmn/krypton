@@ -5,7 +5,7 @@ fileLoaded = False
 try:
     import program  # ? > Run time file
     fileLoaded = True
-    print("Program belleğe alındı.")
+    # print("Program belleğe alındı.")
 
 except Exception as e:
     fileLoaded = False
