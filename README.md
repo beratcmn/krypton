@@ -299,11 +299,3 @@ while True:
 *   This example uses `iken Doğru` for an infinite loop, which transpiles to `while True`.
 *   It uses built-in functions `giriş` (`input`) and `tamsayı` (`int`).
 *   It introduces a new keyword, `kır` (`break`), which is essential for loop control. We should add this to our PRD.
-
----
-
-These examples give us a fantastic, concrete foundation. They are now part of our official specification.
-
-The next step is to translate this specification into a formal grammar that the `lark` library can understand.
-
-**Are you ready to start drafting the Lark grammar based on these examples?**
