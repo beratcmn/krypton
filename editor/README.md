@@ -1,1 +1,0 @@
-# Krypton dili için geliştirdiğim kod editorü.
